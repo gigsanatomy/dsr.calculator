@@ -35,6 +35,7 @@ function toggleJointApplicant() {
 
 document.getElementById('single-joint').addEventListener('change', toggleJointApplicant);
 
+
 function calculateOTandAllowance(carumanTetap, otInputs, allowanceInputs, totalOTField, totalAllowanceField) {
     var totalOT = 0;
     var totalAllowance = 0;

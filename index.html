@@ -21,11 +21,13 @@
             <input type="date" id="dob" name="dob" readonly>
         </div>
 
-        <div id="joint-applicant-fields" style="display: none;">
+        <div id="joint-applicant-fields" class="customer-details" style="display: none;">
             <label for="spouse-name">Spouse Name:</label>
             <input type="text" id="spouse-name" name="spouse-name">
+            
             <label for="spouse-ic-number">Spouse IC Number:</label>
             <input type="text" id="spouse-ic-number" name="spouse-ic-number">
+            
             <label for="spouse-dob">Spouse Date of Birth:</label>
             <input type="date" id="spouse-dob" name="spouse-dob" readonly>
         </div>
@@ -50,7 +52,7 @@
             </select>
         </div>
 
-        <div id="spouse-salary-info" style="display: none;">
+        <div id="spouse-salary-info" class="salary-info" style="display: none;">
             <h3>PARTNER SALARY INFO</h3>
             <label for="spouse-salary-type">Salary Type:</label>
             <select id="spouse-salary-type" name="spouse-salary-type">
@@ -58,10 +60,13 @@
                 <option value="commision-based">Commision Based</option>
                 <option value="self-employed">Self Employed</option>
             </select>
+            
             <label for="spouse-basic-salary">Spouse Basic Salary:</label>
             <input type="number" id="spouse-basic-salary" name="spouse-basic-salary">
+            
             <label for="spouse-fix-allowance">Fix Allowance:</label>
             <input type="number" id="spouse-fix-allowance" name="spouse-fix-allowance">
+            
             <label for="spouse-caruman-tetap">Caruman Tetap?</label>
             <select id="spouse-caruman-tetap" name="spouse-caruman-tetap">
                 <option value="yes">Yes</option>

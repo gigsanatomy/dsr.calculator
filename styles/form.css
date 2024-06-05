@@ -16,17 +16,17 @@ form {
     gap: 20px;
 }
 
-.customer-details, .salary-info, .earning-section, .deduction-section, .totals, #joint-applicant-fields, #spouse-salary-info {
+.customer-details, .salary-info, .earning-section, .deduction-section, .totals, #joint-applicant-fields, #spouse-salary-info, .refinance-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
-.customer-details label, .salary-info label, .earning-section label, .deduction-section label, .totals label, #joint-applicant-fields label, #spouse-salary-info label {
+.customer-details label, .salary-info label, .earning-section label, .deduction-section label, .totals label, #joint-applicant-fields label, #spouse-salary-info label, .refinance-info label {
     grid-column: span 1;
 }
 
-.customer-details input, .salary-info input, .earning-section input, .deduction-section input, .totals input, #joint-applicant-fields input, #spouse-salary-info input, .customer-details select, .salary-info select, .earning-section select, .deduction-section select, .totals select, #joint-applicant-fields select, #spouse-salary-info select {
+.customer-details input, .salary-info input, .earning-section input, .deduction-section input, .totals input, #joint-applicant-fields input, #spouse-salary-info input, .customer-details select, .salary-info select, .earning-section select, .deduction-section select, .totals select, #joint-applicant-fields select, #spouse-salary-info select, .refinance-info select {
     grid-column: span 1;
     padding: 5px;
     border: 1px solid #ccc;
@@ -71,6 +71,7 @@ th {
     border-radius: 5px;
 }
 
+
 .refinance-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,4 +89,3 @@ th {
     border: 1px solid #ccc;
     border-radius: 3px;
 }
-
