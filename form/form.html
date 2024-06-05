@@ -465,6 +465,65 @@
             </tbody>
         </table>
 
+        <h3>Tenancy Agreement (Tables)</h3>
+<table id="tenancy-agreement-table">
+    <thead>
+        <tr>
+            <th>Row</th>
+            <th>Column</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2023</td>
+            <td>
+                <select name="tenancy-2023">
+                    <option value="70%">70%</option>
+                    <option value="80%">80%</option>
+                    <option value="90%">90%</option>
+                    <option value="100%">100%</option>
+                    <option value="others">Others</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>2024</td>
+            <td>
+                <select name="tenancy-2024">
+                    <option value="70%">70%</option>
+                    <option value="80%">80%</option>
+                    <option value="90%">90%</option>
+                    <option value="100%">100%</option>
+                    <option value="others">Others</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" onclick="addTenancyRow()">Tambah Baris Tenancy</button>
+
+<h3>EA Form</h3>
+<table id="ea-form-table">
+    <thead>
+        <tr>
+            <th>Row</th>
+            <th>Column</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ASB Divident</td>
+            <td>
+                <select name="ea-form-asb-divident">
+                    <option value="100%">100%</option>
+                    <option value="others">Others</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" onclick="addEARow()">Tambah Baris EA</button>
+
         <h2>REFINANCE INFORMATION</h2>
         <label for="bank-to-refinance">Bank to Refinance:</label>
         <select id="bank-to-refinance" name="bank-to-refinance">
@@ -582,8 +641,9 @@
 </table>
 <button type="button" onclick="addRow('not-consolidate-table')">Tambah Baris</button>
 
-
+    <br>
         <button type="button" onclick="submitForm()">Hantar</button>
+    </br>
     </form>
     <script src="../scripts/form.js"></script>
 </body>

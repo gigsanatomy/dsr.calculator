@@ -67,6 +67,37 @@ function addRow(tableId) {
     `;
 }
 
+function addTenancyRow() {
+    var table = document.getElementById('tenancy-agreement-table').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td><input type="text" name="tenancy-row"></td>
+        <td>
+            <select name="tenancy-column">
+                <option value="70%">70%</option>
+                <option value="80%">80%</option>
+                <option value="90%">90%</option>
+                <option value="100%">100%</option>
+                <option value="others">Others</option>
+            </select>
+        </td>
+    `;
+}
+
+function addEARow() {
+    var table = document.getElementById('ea-form-table').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td><input type="text" name="ea-row"></td>
+        <td>
+            <select name="ea-column">
+                <option value="100%">100%</option>
+                <option value="others">Others</option>
+            </select>
+        </td>
+    `;
+}
+
 function submitForm() {
     var form = document.getElementById('form-data');
     var formData = new FormData(form);
