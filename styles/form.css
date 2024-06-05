@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h3 {
+    background-color: #004085;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form {
+    display: grid;
+    gap: 20px;
+}
+
+.refinance-info, .earning-section, .deduction-section, .totals {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.refinance-info label, .earning-section label, .deduction-section label, .totals label {
+    grid-column: span 1;
+}
+
+.refinance-info input, .refinance-info select, .earning-section input, .deduction-section input, .totals input {
+    grid-column: span 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.totals div {
+    display: flex;
+    align-items: center;
+}
+
+.totals input {
+    margin-left: 10px;
+    flex: 1;
+}
+
+#joint-applicant-fields {
+    display: none;
+    grid-column: span 2;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+

@@ -1,374 +1,192 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../styles/form.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSR Calculator</title>
+    <link rel="stylesheet" href="styles/form.css">
 </head>
 <body>
     <form id="form-data">
-        <h2>Maklumat Pelanggan</h2>
-        <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" required>
-
-        <label for="ic-number">IC Number:</label>
-        <input type="text" id="ic-number" name="ic-number" required>
-
-        <label for="phone-number">Phone Number:</label>
-        <input type="text" id="phone-number" name="phone-number" required>
-
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" readonly>
-
-        <label for="joint-applicant">Single/Joint Applicant:</label>
-        <select id="joint-applicant" name="joint-applicant" onchange="toggleJointApplicant()">
-            <option value="single">Single</option>
-            <option value="joint">Joint</option>
-        </select>
+        <!-- Customer Details -->
+        <h3>CUSTOMER DETAILS</h3>
+        <div class="customer-details">
+            <label for="nama">Name:</label>
+            <input type="text" id="nama" name="nama">
+            <label for="ic-number">IC Number:</label>
+            <input type="text" id="ic-number" name="ic-number">
+            <label for="phone-number">Phone Number:</label>
+            <input type="text" id="phone-number" name="phone-number">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" readonly>
+        </div>
 
         <div id="joint-applicant-fields" style="display: none;">
             <label for="spouse-name">Spouse Name:</label>
             <input type="text" id="spouse-name" name="spouse-name">
-
             <label for="spouse-ic-number">Spouse IC Number:</label>
             <input type="text" id="spouse-ic-number" name="spouse-ic-number">
-
             <label for="spouse-dob">Spouse Date of Birth:</label>
             <input type="date" id="spouse-dob" name="spouse-dob" readonly>
+        </div>
 
-            <h2>Maklumat Gaji Pasangan</h2>
+        <!-- Salary Info -->
+        <h3>SALARY INFO</h3>
+        <div class="salary-info">
+            <label for="salary-type">Salary Type:</label>
+            <select id="salary-type" name="salary-type">
+                <option value="salary-earner">Salary Earner</option>
+                <option value="commision-based">Commision Based</option>
+                <option value="self-employed">Self Employed</option>
+            </select>
+            <label for="basic-salary">Basic Salary:</label>
+            <input type="number" id="basic-salary" name="basic-salary">
+            <label for="fix-allowance">Fix Allowance:</label>
+            <input type="number" id="fix-allowance" name="fix-allowance">
+            <label for="caruman-tetap">Caruman Tetap?</label>
+            <select id="caruman-tetap" name="caruman-tetap">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div id="spouse-salary-info" style="display: none;">
+            <h3>PARTNER SALARY INFO</h3>
             <label for="spouse-salary-type">Salary Type:</label>
             <select id="spouse-salary-type" name="spouse-salary-type">
                 <option value="salary-earner">Salary Earner</option>
-                <option value="commission-based">Commission Based</option>
+                <option value="commision-based">Commision Based</option>
                 <option value="self-employed">Self Employed</option>
             </select>
-
             <label for="spouse-basic-salary">Spouse Basic Salary:</label>
             <input type="number" id="spouse-basic-salary" name="spouse-basic-salary">
-
             <label for="spouse-fix-allowance">Fix Allowance:</label>
             <input type="number" id="spouse-fix-allowance" name="spouse-fix-allowance">
-
             <label for="spouse-caruman-tetap">Caruman Tetap?</label>
             <select id="spouse-caruman-tetap" name="spouse-caruman-tetap">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
-
-            <h3>Spouse Earning (Jan-Dec)</h3>
-            <table id="spouse-earning-table">
-                <thead>
-                    <tr>
-                        <th>Month</th>
-                        <th>Monthly OT</th>
-                        <th>Variable Allowance</th>
-                        <th>Others</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Repeat this block for each month -->
-                    <tr>
-                        <td>JAN</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>FEB</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>MAR</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>APR</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>MAY</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>JUNE</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>JUL</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>AUG</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>SEP</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>OCT</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>NOV</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>DEC</td>
-                        <td><input type="number" name="spouse-monthly-ot-jan"></td>
-                        <td><input type="number" name="spouse-variable-allowance-jan"></td>
-                        <td><input type="number" name="spouse-others-jan"></td>
-                    </tr>
-                    <!-- Repeat for other months -->
-                </tbody>
-            </table>
-
-            <label for="spouse-total-ot">70% of OT:</label>
-            <input type="number" id="spouse-total-ot" name="spouse-total-ot" readonly>
-
-            <label for="spouse-total-variable-allowance">70% of Variable Allowance:</label>
-            <input type="number" id="spouse-total-variable-allowance" name="spouse-total-variable-allowance" readonly>
-
-            <h3>Spouse Deduction (Jan-Dec)</h3>
-            <table id="spouse-deduction-table">
-                <thead>
-                    <tr>
-                        <th>Month</th>
-                        <th>EPF</th>
-                        <th>EIS & SOCSO</th>
-                        <th>Tax (PCB)</th>
-                        <th>Others</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Repeat this block for each month -->
-                    <tr>
-                        <td>JAN</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>FEB</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>MAR</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>APR</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>MAY</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>JUNE</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>JULY</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>AUG</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>SEP</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>OCT</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>NOV</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <tr>
-                        <td>DEC</td>
-                        <td><input type="number" name="spouse-epf-jan"></td>
-                        <td><input type="number" name="spouse-eis-socso-jan"></td>
-                        <td><input type="number" name="spouse-tax-jan"></td>
-                        <td><input type="number" name="spouse-deduction-others-jan"></td>
-                    </tr>
-                    <!-- Repeat for other months -->
-                </tbody>
-            </table>
         </div>
 
-        <h2>Maklumat Gaji</h2>
-        <label for="salary-type">Salary Type:</label>
-        <select id="salary-type" name="salary-type">
-            <option value="salary-earner">Salary Earner</option>
-            <option value="commission-based">Commission Based</option>
-            <option value="self-employed">Self Employed</option>
-        </select>
-
-        <label for="basic-salary">Basic Salary:</label>
-        <input type="number" id="basic-salary" name="basic-salary" required>
-
-        <label for="fix-allowance">Fix Allowance:</label>
-        <input type="number" id="fix-allowance" name="fix-allowance">
-
-        <label for="caruman-tetap">Caruman Tetap?</label>
-        <select id="caruman-tetap" name="caruman-tetap">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
-
-        <h3>Earning</h3>
+        <!-- Earning Table -->
+        <h3>EARNING</h3>
         <table id="earning-table">
             <thead>
                 <tr>
-                    <th>Month</th>
-                    <th>Monthly OT</th>
+                    <th>Monthly</th>
+                    <th>OT</th>
+                    <th>OT 2</th>
                     <th>Variable Allowance</th>
                     <th>Others</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Repeat this block for each month -->
-                <tr>
-                    <td>JAN</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>FEB</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>MAR</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>APR</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>MAY</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>JUNE</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>JUL</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>AUG</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>SEP</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>OCT</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>NOV</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <tr>
-                    <td>DEC</td>
-                    <td><input type="number" name="monthly-ot-jan"></td>
-                    <td><input type="number" name="variable-allowance-jan"></td>
-                    <td><input type="number" name="others-jan"></td>
-                </tr>
-                <!-- Repeat for other months -->
+				<tr>
+					<td>JAN</td>
+					<td><input type="number" name="monthly-ot-jan"></td>
+					<td><input type="number" name="monthly-ot2-jan"></td>
+					<td><input type="number" name="variable-allowance-jan"></td>
+					<td><input type="number" name="others-jan"></td>
+				</tr>
+				<tr>
+					<td>FEB</td>
+					<td><input type="number" name="monthly-ot-feb"></td>
+					<td><input type="number" name="monthly-ot2-feb"></td>
+					<td><input type="number" name="variable-allowance-feb"></td>
+					<td><input type="number" name="others-feb"></td>
+				</tr>
+				<tr>
+					<td>MAR</td>
+					<td><input type="number" name="monthly-ot-mar"></td>
+					<td><input type="number" name="monthly-ot2-mar"></td>
+					<td><input type="number" name="variable-allowance-mar"></td>
+					<td><input type="number" name="others-mar"></td>
+				</tr>
+				<tr>
+					<td>APR</td>
+					<td><input type="number" name="monthly-ot-apr"></td>
+					<td><input type="number" name="monthly-ot2-apr"></td>
+					<td><input type="number" name="variable-allowance-apr"></td>
+					<td><input type="number" name="others-apr"></td>
+				</tr>
+				<tr>
+					<td>MEI</td>
+					<td><input type="number" name="monthly-ot-mei"></td>
+					<td><input type="number" name="monthly-ot2-mei"></td>
+					<td><input type="number" name="variable-allowance-mei"></td>
+					<td><input type="number" name="others-mei"></td>
+				</tr>
+				<tr>
+					<td>JUN</td>
+					<td><input type="number" name="monthly-ot-jun"></td>
+					<td><input type="number" name="monthly-ot2-jun"></td>
+					<td><input type="number" name="variable-allowance-jun"></td>
+					<td><input type="number" name="others-jun"></td>
+				</tr>
+				<tr>
+					<td>JUL</td>
+					<td><input type="number" name="monthly-ot-jul"></td>
+					<td><input type="number" name="monthly-ot2-jul"></td>
+					<td><input type="number" name="variable-allowance-jul"></td>
+					<td><input type="number" name="others-jul"></td>
+				</tr>
+				<tr>
+					<td>OGOS</td>
+					<td><input type="number" name="monthly-ot-ogos"></td>
+					<td><input type="number" name="monthly-ot2-ogos"></td>
+					<td><input type="number" name="variable-allowance-ogos"></td>
+					<td><input type="number" name="others-ogos"></td>
+				</tr>
+				<tr>
+					<td>SEP</td>
+					<td><input type="number" name="monthly-ot-sep"></td>
+					<td><input type="number" name="monthly-ot2-sep"></td>
+					<td><input type="number" name="variable-allowance-sep"></td>
+					<td><input type="number" name="others-sep"></td>
+				</tr>
+				<tr>
+					<td>OKT</td>
+					<td><input type="number" name="monthly-ot-okt"></td>
+					<td><input type="number" name="monthly-ot2-okt"></td>
+					<td><input type="number" name="variable-allowance-okt"></td>
+					<td><input type="number" name="others-okt"></td>
+				</tr>
+				<tr>
+					<td>NOV</td>
+					<td><input type="number" name="monthly-ot-nov"></td>
+					<td><input type="number" name="monthly-ot2-nov"></td>
+					<td><input type="number" name="variable-allowance-nov"></td>
+					<td><input type="number" name="others-nov"></td>
+				</tr>
+				<tr>
+					<td>DIS</td>
+					<td><input type="number" name="monthly-ot-dis"></td>
+					<td><input type="number" name="monthly-ot2-dis"></td>
+					<td><input type="number" name="variable-allowance-dis"></td>
+					<td><input type="number" name="others-dis"></td>
+				</tr>
+
+                <!-- Repeat rows for each month -->
             </tbody>
         </table>
+        <div class="totals">
+            <div>
+                <label>70% of Overtime:</label>
+                <input type="text" id="total-ot" readonly>
+            </div>
+            <div>
+                <label>70% of Variable Allowance:</label>
+                <input type="text" id="total-variable-allowance" readonly>
+            </div>
+        </div>
 
-        <label for="total-ot">70% of OT:</label>
-        <input type="number" id="total-ot" name="total-ot" readonly>
-
-        <label for="total-variable-allowance">70% of Variable Allowance:</label>
-        <input type="number" id="total-variable-allowance" name="total-variable-allowance" readonly>
-
-        <h3>Deduction</h3>
+        <!-- Deduction Table -->
+        <h3>DEDUCTION</h3>
         <table id="deduction-table">
             <thead>
                 <tr>
-                    <th>Month</th>
+                    <th>Monthly</th>
                     <th>EPF</th>
                     <th>EIS & SOCSO</th>
                     <th>Tax (PCB)</th>
@@ -376,95 +194,96 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Repeat this block for each month -->
-                <tr>
-                    <td>JAN</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>FEB</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>MAC</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>APR</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>MAY</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>JUN</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>JULY</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>AUG</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>SEP</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>OCT</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>NOV</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <tr>
-                    <td>DEC</td>
-                    <td><input type="number" name="epf-jan"></td>
-                    <td><input type="number" name="eis-socso-jan"></td>
-                    <td><input type="number" name="tax-jan"></td>
-                    <td><input type="number" name="deduction-others-jan"></td>
-                </tr>
-                <!-- Repeat for other months -->
+				<tr>
+					<td>JAN</td>
+					<td><input type="number" name="epf-jan"></td>
+					<td><input type="number" name="eis-socso-jan"></td>
+					<td><input type="number" name="tax-pcb-jan"></td>
+					<td><input type="number" name="deduction-others-jan"></td>
+				</tr>
+				<tr>
+					<td>FEB</td>
+					<td><input type="number" name="epf-feb"></td>
+					<td><input type="number" name="eis-socso-feb"></td>
+					<td><input type="number" name="tax-pcb-feb"></td>
+					<td><input type="number" name="deduction-others-feb"></td>
+				</tr>
+				<tr>
+					<td>MAR</td>
+					<td><input type="number" name="epf-mar"></td>
+					<td><input type="number" name="eis-socso-mar"></td>
+					<td><input type="number" name="tax-pcb-mar"></td>
+					<td><input type="number" name="deduction-others-mar"></td>
+				</tr>
+				<tr>
+					<td>APR</td>
+					<td><input type="number" name="epf-apr"></td>
+					<td><input type="number" name="eis-socso-apr"></td>
+					<td><input type="number" name="tax-pcb-apr"></td>
+					<td><input type="number" name="deduction-others-apr"></td>
+				</tr>
+				<tr>
+					<td>MEI</td>
+					<td><input type="number" name="epf-mei"></td>
+					<td><input type="number" name="eis-socso-mei"></td>
+					<td><input type="number" name="tax-pcb-mei"></td>
+					<td><input type="number" name="deduction-others-mei"></td>
+				</tr>
+				<tr>
+					<td>JUN</td>
+					<td><input type="number" name="epf-jun"></td>
+					<td><input type="number" name="eis-socso-jun"></td>
+					<td><input type="number" name="tax-pcb-jun"></td>
+					<td><input type="number" name="deduction-others-jun"></td>
+				</tr>
+				<tr>
+					<td>JUL</td>
+					<td><input type="number" name="epf-jul"></td>
+					<td><input type="number" name="eis-socso-jul"></td>
+					<td><input type="number" name="tax-pcb-jul"></td>
+					<td><input type="number" name="deduction-others-jul"></td>
+				</tr>
+				<tr>
+					<td>OGOS</td>
+					<td><input type="number" name="epf-ogos"></td>
+					<td><input type="number" name="eis-socso-ogos"></td>
+					<td><input type="number" name="tax-pcb-ogos"></td>
+					<td><input type="number" name="deduction-others-ogos"></td>
+				</tr>
+				<tr>
+					<td>SEP</td>
+					<td><input type="number" name="epf-sep"></td>
+					<td><input type="number" name="eis-socso-sep"></td>
+					<td><input type="number" name="tax-pcb-sep"></td>
+					<td><input type="number" name="deduction-others-sep"></td>
+				</tr>
+				<tr>
+					<td>OKT</td>
+					<td><input type="number" name="epf-okt"></td>
+					<td><input type="number" name="eis-socso-okt"></td>
+					<td><input type="number" name="tax-pcb-okt"></td>
+					<td><input type="number" name="deduction-others-okt"></td>
+				</tr>
+				<tr>
+					<td>NOV</td>
+					<td><input type="number" name="epf-nov"></td>
+					<td><input type="number" name="eis-socso-nov"></td>
+					<td><input type="number" name="tax-pcb-nov"></td>
+					<td><input type="number" name="deduction-others-nov"></td>
+				</tr>
+				<tr>
+					<td>DIS</td>
+					<td><input type="number" name="epf-dis"></td>
+					<td><input type="number" name="eis-socso-dis"></td>
+					<td><input type="number" name="tax-pcb-dis"></td>
+					<td><input type="number" name="deduction-others-dis"></td>
+				</tr>
+
+                <!-- Repeat rows for each month -->
             </tbody>
         </table>
 
+        <!-- Tenancy Agreement Table -->
         <h3>Tenancy Agreement</h3>
         <table id="tenancy-agreement-table">
             <thead>
@@ -484,8 +303,8 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" onclick="addTenancyRow()">Tambah Baris Tenancy</button>
-        
+
+        <!-- EA Form Table -->
         <h3>EA Form</h3>
         <table id="ea-form-table">
             <thead>
@@ -506,8 +325,14 @@
                 <tr>
                     <td>2024</td>
                     <td><input type="text" name="ea-2024-70"></td>
-                    <td><input type="text" name="ea-2024-80"></td>            
+                    <td><input type="text" name="ea-2024-80"></td>
                     <td><input type="text" name="ea-2024-90"></td>
+                </tr>
+                <tr>
+                    <td>Bonus</td>
+                    <td><input type="text" name="ea-bonus-70"></td>
+                    <td><input type="text" name="ea-bonus-80"></td>
+                    <td><input type="text" name="ea-bonus-90"></td>
                 </tr>
                 <tr>
                     <td>Total</td>
@@ -517,7 +342,8 @@
                 </tr>
             </tbody>
         </table>
-        
+
+        <!-- ASB Dividen Table -->
         <h3>ASB Dividen</h3>
         <table id="asb-dividen-table">
             <thead>
@@ -537,8 +363,8 @@
                 </tr>
             </tbody>
         </table>
-        <button type="button" onclick="addASBRow()">Tambah Baris ASB</button>
-        
+
+        <!-- Item to be Consolidate Table -->
         <h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
         <table id="consolidate-table">
             <thead>
@@ -581,7 +407,8 @@
             </tbody>
         </table>
         <button type="button" onclick="addRow('consolidate-table')">Tambah Baris</button>
-        
+
+        <!-- Item Not to be Consolidate Table -->
         <h3>ITEM NOT TO BE CONSOLIDATE</h3>
         <table id="not-consolidate-table">
             <thead>
@@ -622,141 +449,8 @@
             </tbody>
         </table>
         <button type="button" onclick="addRow('not-consolidate-table')">Tambah Baris</button>
-                
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td><input type="text" name="ea-total-70"></td>
-                    <td><input type="text" name="ea-total-80"></td>
-                    <td><input type="text" name="ea-total-90"></td>
-                </tr>
-            </tbody>
-        </table>        
-
-        <h2>REFINANCE INFORMATION</h2>
-        <label for="bank-to-refinance">Bank to Refinance:</label>
-        <select id="bank-to-refinance" name="bank-to-refinance">
-            <option value="maybank">Maybank</option>
-            <option value="rhb-bank">RHB Bank</option>
-            <option value="muamalat-bank">Muamalat Bank</option>
-            <option value="coop-bank">COOP Bank</option>
-        </select>
-
-        <label for="more-than-3-house">More than 3 House?</label>
-        <select id="more-than-3-house" name="more-than-3-house">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
-
-                <label for="house-monthly">House Monthly:</label>
-        <input type="number" id="house-monthly" name="house-monthly">
-
-        <label for="housing-loan-balance">Housing Loan Balance:</label>
-        <input type="number" id="housing-loan-balance" name="housing-loan-balance">
-
-        <label for="market-value">Market Value:</label>
-        <input type="number" id="market-value" name="market-value">
-
-        <label for="interest-rate">Interest Rate:</label>
-        <input type="number" id="interest-rate" name="interest-rate" value="3.9" step="0.01">
-
-        <label for="moving-cost">Moving Cost:</label>
-        <select id="moving-cost" name="moving-cost">
-            <option value="10%">10%</option>
-            <option value="5%">5%</option>
-        </select>
-
-        <h3>Actual Housing Loan Balance</h3>
-        <div id="actual-housing-loan-bal"></div>
-
-<h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
-<table id="consolidate-table">
-    <thead>
-        <tr>
-            <th>No. Item</th>
-            <th>List Item (CCRIS)</th>
-            <th>List Item (Payslip)</th>
-            <th>Total Outstanding</th>
-            <th>Monthly Payment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><input type="number" name="item-no"></td>
-            <td>
-                <select name="ccris-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td>
-                <select name="payslip-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td><input type="number" name="total-outstanding"></td>
-            <td><input type="number" name="monthly-payment"></td>
-        </tr>
-    </tbody>
-</table>
-<button type="button" onclick="addRow('consolidate-table')">Tambah Baris</button>
-
-<h3>ITEM NOT TO BE CONSOLIDATE</h3>
-<table id="not-consolidate-table">
-    <thead>
-        <tr>
-            <th>No. Item</th>
-            <th>List Item (CCRIS)</th>
-            <th>List Item (Payslip)</th>
-            <th>Monthly Payment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><input type="number" name="not-item-no"></td>
-            <td>
-                <select name="not-ccris-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td>
-                <select name="not-payslip-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td><input type="number" name="not-monthly-payment"></td>
-        </tr>
-    </tbody>
-</table>
-<button type="button" onclick="addRow('not-consolidate-table')">Tambah Baris</button>
-
-    <br>
-        <button type="button" onclick="submitForm()">Hantar</button>
-    </br>
     </form>
-    <script src="../scripts/form.js"></script>
+
+    <script src="scripts/form.js"></script>
 </body>
 </html>

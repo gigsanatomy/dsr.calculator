@@ -23,12 +23,17 @@ document.getElementById('spouse-ic-number').addEventListener('input', function()
 function toggleJointApplicant() {
     var jointApplicant = document.getElementById('single-joint').value;
     var jointFields = document.getElementById('joint-applicant-fields');
+    var spouseFields = document.getElementById('spouse-salary-info');
     if (jointApplicant === 'joint') {
-        jointFields.style.display = 'block';
+        jointFields.style.display = 'grid';
+        spouseFields.style.display = 'grid';
     } else {
         jointFields.style.display = 'none';
+        spouseFields.style.display = 'none';
     }
 }
+
+document.getElementById('single-joint').addEventListener('change', toggleJointApplicant);
 
 function calculateOTandAllowance(carumanTetap, otInputs, allowanceInputs, totalOTField, totalAllowanceField) {
     var totalOT = 0;
