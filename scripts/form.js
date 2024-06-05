@@ -21,7 +21,7 @@ document.getElementById('spouse-ic-number').addEventListener('input', function()
 });
 
 function toggleJointApplicant() {
-    var jointApplicant = document.getElementById('joint-applicant').value;
+    var jointApplicant = document.getElementById('single-joint').value;
     var jointFields = document.getElementById('joint-applicant-fields');
     if (jointApplicant === 'joint') {
         jointFields.style.display = 'block';
@@ -120,6 +120,38 @@ function calculateSpouseHousingLoanBal() {
     var housingLoanBal = parseFloat(document.getElementById('spouse-housing-loan-balance').value) || 0;
     var actualLoanBal = (houseMonthly * 3) + housingLoanBal;
     document.getElementById('spouse-actual-housing-loan-bal').textContent = actualLoanBal.toFixed(2);
+}
+
+function addRow(tableId) {
+    var table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td><input type="number" name="item-no"></td>
+        <td>
+            <select name="ccris-item">
+                <option value="pelinfnce">PELNFNCE</option>
+                <option value="crdtcard">CRDTCARD</option>
+                <option value="otlinfnce">OTLNFNCE</option>
+                <option value="pcpascar">PCPASCAR</option>
+                <option value="hslnfnce">HSLNFNCE</option>
+                <option value="stlinfnce">STLNFNCE</option>
+                <option value="ispwnbkg">ISPWNBKG</option>
+            </select>
+        </td>
+        <td>
+            <select name="payslip-item">
+                <option value="pelinfnce">PELNFNCE</option>
+                <option value="crdtcard">CRDTCARD</option>
+                <option value="otlinfnce">OTLNFNCE</option>
+                <option value="pcpascar">PCPASCAR</option>
+                <option value="hslnfnce">HSLNFNCE</option>
+                <option value="stlinfnce">STLNFNCE</option>
+                <option value="ispwnbkg">ISPWNBKG</option>
+            </select>
+        </td>
+        <td><input type="number" name="total-outstanding"></td>
+        <td><input type="number" name="monthly-payment"></td>
+    `;
 }
 
 function submitForm() {
