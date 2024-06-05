@@ -4,66 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Kewangan</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <div class="container">
         <h1>Kalkulator Kewangan</h1>
         <div class="tabs">
-            <div class="tab tab-active" onclick="openTab(event, 'dsr')">DSR Calculator</div>
+            <div class="tab tab-active" onclick="openTab(event, 'form')">FORM</div>
+            <div class="tab" onclick="openTab(event, 'dsr')">DSR Calculator</div>
             <div class="tab" onclick="openTab(event, 'max-loan')">Max Loan</div>
             <div class="tab" onclick="openTab(event, 'refinance')">Refinance</div>
         </div>
 
-        <div id="dsr" class="tab-content content-active">
-            <form id="dsr-form">
-                <label for="gaji">Gaji Bulanan:</label>
-                <input type="number" id="gaji" name="gaji" required>
+        <div id="form" class="tab-content content-active">
+            <?php include('form/form.html'); ?>
+        </div>
 
-                <label for="komitmen">Jumlah Komitmen Bulanan:</label>
-                <input type="number" id="komitmen" name="komitmen" required>
-
-                <button type="button" onclick="kiraDSR()">Kira DSR</button>
-            </form>
-            <h2>Hasil DSR: <span id="hasil-dsr"></span></h2>
+        <div id="dsr" class="tab-content">
+            <?php include('dsr/dsr.html'); ?>
         </div>
 
         <div id="max-loan" class="tab-content">
-            <form id="max-loan-form">
-                <label for="gaji-max-loan">Gaji Bulanan:</label>
-                <input type="number" id="gaji-max-loan" name="gaji-max-loan" required>
-
-                <label for="komitmen-max-loan">Jumlah Komitmen Bulanan:</label>
-                <input type="number" id="komitmen-max-loan" name="komitmen-max-loan" required>
-
-                <label for="interest-rate">Kadar Faedah (%):</label>
-                <input type="number" id="interest-rate" name="interest-rate" step="0.01" required>
-
-                <label for="loan-term">Tempoh Pinjaman (tahun):</label>
-                <input type="number" id="loan-term" name="loan-term" required>
-
-                <button type="button" onclick="kiraMaxLoan()">Kira Pinjaman Maksimum</button>
-            </form>
-            <h2>Pinjaman Maksimum: <span id="hasil-max-loan"></span></h2>
+            <?php include('max-loan/max-loan.html'); ?>
         </div>
 
         <div id="refinance" class="tab-content">
-            <form id="refinance-form">
-                <label for="balance">Baki Pinjaman Semasa:</label>
-                <input type="number" id="balance" name="balance" required>
-
-                <label for="new-interest-rate">Kadar Faedah Baru (%):</label>
-                <input type="number" id="new-interest-rate" name="new-interest-rate" step="0.01" required>
-
-                <label for="new-loan-term">Tempoh Pinjaman Baru (tahun):</label>
-                <input type="number" id="new-loan-term" name="new-loan-term" required>
-
-                <button type="button" onclick="kiraRefinance()">Kira Pembiayaan Semula</button>
-            </form>
-            <h2>Bayaran Bulanan Baru: <span id="hasil-refinance"></span></h2>
+            <?php include('refinance/refinance.html'); ?>
         </div>
     </div>
 
-    <script src="scripts.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/form.js"></script>
+    <script src="scripts/dsr.js"></script>
+    <script src="scripts/max-loan.js"></script>
+    <script src="scripts/refinance.js"></script>
 </body>
 </html>
