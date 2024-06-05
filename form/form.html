@@ -465,22 +465,22 @@
             </tbody>
         </table>
 
-    <h2>REFINANCE INFORMATION</h2>
+        <h2>REFINANCE INFORMATION</h2>
         <label for="bank-to-refinance">Bank to Refinance:</label>
-            <select id="bank-to-refinance" name="bank-to-refinance">
-                <option value="maybank">Maybank</option>
-                <option value="rhb-bank">RHB Bank</option>
-                <option value="muamalat-bank">Muamalat Bank</option>
-                <option value="coop-bank">COOP Bank</option>
-            </select>
+        <select id="bank-to-refinance" name="bank-to-refinance">
+            <option value="maybank">Maybank</option>
+            <option value="rhb-bank">RHB Bank</option>
+            <option value="muamalat-bank">Muamalat Bank</option>
+            <option value="coop-bank">COOP Bank</option>
+        </select>
 
         <label for="more-than-3-house">More than 3 House?</label>
-            <select id="more-than-3-house" name="more-than-3-house">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
+        <select id="more-than-3-house" name="more-than-3-house">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
 
-        <label for="house-monthly">House Monthly:</label>
+                <label for="house-monthly">House Monthly:</label>
         <input type="number" id="house-monthly" name="house-monthly">
 
         <label for="housing-loan-balance">Housing Loan Balance:</label>
@@ -493,96 +493,96 @@
         <input type="number" id="interest-rate" name="interest-rate" value="3.9" step="0.01">
 
         <label for="moving-cost">Moving Cost:</label>
-            <select id="moving-cost" name="moving-cost">
-                <option value="10%">10%</option>
-                <option value="5%">5%</option>
-            </select>
+        <select id="moving-cost" name="moving-cost">
+            <option value="10%">10%</option>
+            <option value="5%">5%</option>
+        </select>
 
-    <h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
-    <table id="consolidate-table">
-        <thead>
-            <tr>
-                <th>No. Item</th>
-                <th>List Item (CCRIS)</th>
-                <th>List Item (Payslip)</th>
-                <th>Total Outstanding</th>
-                <th>Monthly Payment</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Repeat this block for each item -->
-            <tr>
-                <td><input type="number" name="item-no"></td>
-                <td>
-                    <select name="ccris-item">
-                        <option value="pelinfnce">PELNFNCE</option>
-                        <option value="crdtcard">CRDTCARD</option>
-                        <option value="otlinfnce">OTLNFNCE</option>
-                        <option value="pcpascar">PCPASCAR</option>
-                        <option value="hslnfnce">HSLNFNCE</option>
-                        <option value="stlinfnce">STLNFNCE</option>
-                        <option value="ispwnbkg">ISPWNBKG</option>
-                    </select>
-                </td>
-                <td>
-                    <select name="payslip-item">
-                        <option value="pelinfnce">PELNFNCE</option>
-                        <option value="crdtcard">CRDTCARD</option>
-                        <option value="otlinfnce">OTLNFNCE</option>
-                        <option value="pcpascar">PCPASCAR</option>
-                        <option value="hslnfnce">HSLNFNCE</option>
-                        <option value="stlinfnce">STLNFNCE</option>
-                        <option value="ispwnbkg">ISPWNBKG</option>
-                    </select>
-                </td>
-                <td><input type="number" name="total-outstanding"></td>
-                <td><input type="number" name="monthly-payment"></td>
-            </tr>
-            <!-- Repeat for other items -->
-        </tbody>
-</table>
+        <h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
+        <table id="consolidate-table">
+            <thead>
+                <tr>
+                    <th>No. Item</th>
+                    <th>List Item (CCRIS)</th>
+                    <th>List Item (Payslip)</th>
+                    <th>Total Outstanding</th>
+                    <th>Monthly Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Repeat this block for each item -->
+                <tr>
+                    <td><input type="number" name="item-no"></td>
+                    <td>
+                        <select name="ccris-item">
+                            <option value="pelinfnce">PELNFNCE</option>
+                            <option value="crdtcard">CRDTCARD</option>
+                            <option value="otlinfnce">OTLNFNCE</option>
+                            <option value="pcpascar">PCPASCAR</option>
+                            <option value="hslnfnce">HSLNFNCE</option>
+                            <option value="stlinfnce">STLNFNCE</option>
+                            <option value="ispwnbkg">ISPWNBKG</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="payslip-item">
+                            <option value="pelinfnce">PELNFNCE</option>
+                            <option value="crdtcard">CRDTCARD</option>
+                            <option value="otlinfnce">OTLNFNCE</option>
+                            <option value="pcpascar">PCPASCAR</option>
+                            <option value="hslnfnce">HSLNFNCE</option>
+                            <option value="stlinfnce">STLNFNCE</option>
+                            <option value="ispwnbkg">ISPWNBKG</option>
+                        </select>
+                    </td>
+                    <td><input type="number" name="total-outstanding"></td>
+                    <td><input type="number" name="monthly-payment"></td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+        </table>
 
-<h3>ITEM NOT TO BE CONSOLIDATE</h3>
-<table id="not-consolidate-table">
-    <thead>
-        <tr>
-            <th>No. Item</th>
-            <th>List Item (CCRIS)</th>
-            <th>List Item (Payslip)</th>
-            <th>Monthly Payment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Repeat this block for each item -->
-        <tr>
-            <td><input type="number" name="not-item-no"></td>
-            <td>
-                <select name="not-ccris-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td>
-                <select name="not-payslip-item">
-                    <option value="pelinfnce">PELNFNCE</option>
-                    <option value="crdtcard">CRDTCARD</option>
-                    <option value="otlinfnce">OTLNFNCE</option>
-                    <option value="pcpascar">PCPASCAR</option>
-                    <option value="hslnfnce">HSLNFNCE</option>
-                    <option value="stlinfnce">STLNFNCE</option>
-                    <option value="ispwnbkg">ISPWNBKG</option>
-                </select>
-            </td>
-            <td><input type="number" name="not-monthly-payment"></td>
-        </tr>
-        <!-- Repeat for other items -->
-    </tbody>
-</table>
+        <h3>ITEM NOT TO BE CONSOLIDATE</h3>
+        <table id="not-consolidate-table">
+            <thead>
+                <tr>
+                    <th>No. Item</th>
+                    <th>List Item (CCRIS)</th>
+                    <th>List Item (Payslip)</th>
+                    <th>Monthly Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Repeat this block for each item -->
+                <tr>
+                    <td><input type="number" name="not-item-no"></td>
+                    <td>
+                        <select name="not-ccris-item">
+                            <option value="pelinfnce">PELNFNCE</option>
+                            <option value="crdtcard">CRDTCARD</option>
+                            <option value="otlinfnce">OTLNFNCE</option>
+                            <option value="pcpascar">PCPASCAR</option>
+                            <option value="hslnfnce">HSLNFNCE</option>
+                            <option value="stlinfnce">STLNFNCE</option>
+                            <option value="ispwnbkg">ISPWNBKG</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="not-payslip-item">
+                            <option value="pelinfnce">PELNFNCE</option>
+                            <option value="crdtcard">CRDTCARD</option>
+                            <option value="otlinfnce">OTLNFNCE</option>
+                            <option value="pcpascar">PCPASCAR</option>
+                            <option value="hslnfnce">HSLNFNCE</option>
+                            <option value="stlinfnce">STLNFNCE</option>
+                            <option value="ispwnbkg">ISPWNBKG</option>
+                        </select>
+                    </td>
+                    <td><input type="number" name="not-monthly-payment"></td>
+                </tr>
+                <!-- Repeat for other items -->
+            </tbody>
+        </table>
 
         <button type="button" onclick="submitForm()">Hantar</button>
     </form>

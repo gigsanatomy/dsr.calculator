@@ -49,8 +49,7 @@ function submitForm() {
     console.log('Basic Salary:', formData.get('basic-salary'));
     console.log('Fix Allowance:', formData.get('fix-allowance'));
     console.log('Caruman Tetap:', formData.get('caruman-tetap'));
-    // Add logic to handle Earning and Deduction tables data
-    // Logik pengiraan dan penghantaran data ke tab lain
+    // Logik untuk hantar data tambahan jika diperlukan
 }
 
 // Initialize first tab as active
