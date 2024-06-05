@@ -30,6 +30,43 @@ function toggleJointApplicant() {
     }
 }
 
+function addRow(tableId) {
+    var table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+    var isNotConsolidate = tableId === 'not-consolidate-table';
+    var ccrisItemName = isNotConsolidate ? 'not-ccris-item' : 'ccris-item';
+    var payslipItemName = isNotConsolidate ? 'not-payslip-item' : 'payslip-item';
+    var itemNoName = isNotConsolidate ? 'not-item-no' : 'item-no';
+    var monthlyPaymentName = isNotConsolidate ? 'not-monthly-payment' : 'monthly-payment';
+    newRow.innerHTML = `
+        <td><input type="number" name="${itemNoName}"></td>
+        <td>
+            <select name="${ccrisItemName}">
+                <option value="pelinfnce">PELNFNCE</option>
+                <option value="crdtcard">CRDTCARD</option>
+                <option value="otlinfnce">OTLNFNCE</option>
+                <option value="pcpascar">PCPASCAR</option>
+                <option value="hslnfnce">HSLNFNCE</option>
+                <option value="stlinfnce">STLNFNCE</option>
+                <option value="ispwnbkg">ISPWNBKG</option>
+            </select>
+        </td>
+        <td>
+            <select name="${payslipItemName}">
+                <option value="pelinfnce">PELNFNCE</option>
+                <option value="crdtcard">CRDTCARD</option>
+                <option value="otlinfnce">OTLNFNCE</option>
+                <option value="pcpascar">PCPASCAR</option>
+                <option value="hslnfnce">HSLNFNCE</option>
+                <option value="stlinfnce">STLNFNCE</option>
+                <option value="ispwnbkg">ISPWNBKG</option>
+            </select>
+        </td>
+        <td><input type="number" name="total-outstanding"></td>
+        <td><input type="number" name="${monthlyPaymentName}"></td>
+    `;
+}
+
 function submitForm() {
     var form = document.getElementById('form-data');
     var formData = new FormData(form);
