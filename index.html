@@ -21,17 +21,6 @@
             <input type="date" id="dob" name="dob" readonly>
         </div>
 
-        <div id="joint-applicant-fields" class="customer-details" style="display: none;">
-            <label for="spouse-name">Spouse Name:</label>
-            <input type="text" id="spouse-name" name="spouse-name">
-            
-            <label for="spouse-ic-number">Spouse IC Number:</label>
-            <input type="text" id="spouse-ic-number" name="spouse-ic-number">
-            
-            <label for="spouse-dob">Spouse Date of Birth:</label>
-            <input type="date" id="spouse-dob" name="spouse-dob" readonly>
-        </div>
-
         <!-- Salary Info -->
         <h3>SALARY INFO</h3>
         <div class="salary-info">
@@ -52,8 +41,16 @@
             </select>
         </div>
 
-        <div id="spouse-salary-info" class="salary-info" style="display: none;">
+        <div id="spouse-salary-info" class="hidden-section hidden">
             <h3>PARTNER SALARY INFO</h3>
+            <div id="joint-applicant-fields" class="hidden-section hidden">
+                <label for="spouse-name">Spouse Name:</label>
+                <input type="text" id="spouse-name" name="spouse-name">
+                <label for="spouse-ic-number">Spouse IC Number:</label>
+                <input type="text" id="spouse-ic-number" name="spouse-ic-number">
+                <label for="spouse-dob">Spouse Date of Birth:</label>
+                <input type="date" id="spouse-dob" name="spouse-dob" readonly>
+            </div>
             <label for="spouse-salary-type">Salary Type:</label>
             <select id="spouse-salary-type" name="spouse-salary-type">
                 <option value="salary-earner">Salary Earner</option>
@@ -415,7 +412,7 @@
         </div>
 
         <!-- Item to be Consolidate Table -->
-        <h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
+        <h3>ITEM TO BE CONSOLIDATE</h3>
         <table id="consolidate-table">
             <thead>
                 <tr>

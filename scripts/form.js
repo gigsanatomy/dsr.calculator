@@ -25,11 +25,11 @@ function toggleJointApplicant() {
     var jointFields = document.getElementById('joint-applicant-fields');
     var spouseFields = document.getElementById('spouse-salary-info');
     if (jointApplicant === 'joint') {
-        jointFields.style.display = 'grid';
-        spouseFields.style.display = 'grid';
+        jointFields.classList.remove('hidden');
+        spouseFields.classList.remove('hidden');
     } else {
-        jointFields.style.display = 'none';
-        spouseFields.style.display = 'none';
+        jointFields.classList.add('hidden');
+        spouseFields.classList.add('hidden');
     }
 }
 
