@@ -364,6 +364,51 @@
             </tbody>
         </table>
 
+        <!-- Refinance Info -->
+        <h3>REFINANCE INFO</h3>
+        <div class="refinance-info">
+            <label for="bank-to-refinance">Bank to Refinance:</label>
+            <select id="bank-to-refinance" name="bank-to-refinance">
+                <option value="maybank">Maybank</option>
+                <option value="rhb-bank">RHB Bank</option>
+                <option value="muamalat-bank">Muamalat Bank</option>
+                <option value="coop-bank">COOP Bank</option>
+            </select>
+            
+            <label for="single-joint">Single/Joint Loan:</label>
+            <select id="single-joint" name="single-joint">
+                <option value="single">Single</option>
+                <option value="joint">Joint</option>
+            </select>
+            
+            <label for="more-than-three-houses">More Than 3 Houses?:</label>
+            <select id="more-than-three-houses" name="more-than-three-houses">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            
+            <label for="house-monthly">House Monthly:</label>
+            <input type="number" id="house-monthly" name="house-monthly">
+            
+            <label for="housing-loan-balance">Housing Loan Balance:</label>
+            <input type="number" id="housing-loan-balance" name="housing-loan-balance">
+            
+            <label for="market-value">Market Value:</label>
+            <input type="number" id="market-value" name="market-value">
+            
+            <label for="actual-housing-loan-bal">Actual Housing Loan Balance:</label>
+            <input type="text" id="actual-housing-loan-bal" name="actual-housing-loan-bal" readonly>
+            
+            <label for="interest-rate">Interest Rate:</label>
+            <input type="text" id="interest-rate" name="interest-rate" value="3.9%" readonly>
+            
+            <label for="moving-cost">Moving Cost:</label>
+            <select id="moving-cost" name="moving-cost">
+                <option value="10%">10%</option>
+                <option value="5%">5%</option>
+            </select>
+        </div>
+
         <!-- Item to be Consolidate Table -->
         <h3>ITEM TO BE CONSOLIDATE (TABLES)</h3>
         <table id="consolidate-table">
