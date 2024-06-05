@@ -71,16 +71,10 @@ function addTenancyRow() {
     var table = document.getElementById('tenancy-agreement-table').getElementsByTagName('tbody')[0];
     var newRow = table.insertRow();
     newRow.innerHTML = `
-        <td><input type="text" name="tenancy-row"></td>
-        <td>
-            <select name="tenancy-column">
-                <option value="70%">70%</option>
-                <option value="80%">80%</option>
-                <option value="90%">90%</option>
-                <option value="100%">100%</option>
-                <option value="others">Others</option>
-            </select>
-        </td>
+        <td><input type="text" name="tenancy-70"></td>
+        <td><input type="text" name="tenancy-80"></td>
+        <td><input type="text" name="tenancy-100"></td>
+        <td><input type="text" name="tenancy-others"></td>
     `;
 }
 
@@ -88,13 +82,19 @@ function addEARow() {
     var table = document.getElementById('ea-form-table').getElementsByTagName('tbody')[0];
     var newRow = table.insertRow();
     newRow.innerHTML = `
-        <td><input type="text" name="ea-row"></td>
-        <td>
-            <select name="ea-column">
-                <option value="100%">100%</option>
-                <option value="others">Others</option>
-            </select>
-        </td>
+        <td><input type="text" name="ea-year"></td>
+        <td><input type="text" name="ea-70"></td>
+        <td><input type="text" name="ea-80"></td>
+        <td><input type="text" name="ea-90"></td>
+    `;
+}
+
+function addASBRow() {
+    var table = document.getElementById('asb-dividen-table').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td><input type="text" name="asb-100"></td>
+        <td><input type="text" name="asb-others"></td>
     `;
 }
 

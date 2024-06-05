@@ -465,64 +465,85 @@
             </tbody>
         </table>
 
-        <h3>Tenancy Agreement (Tables)</h3>
-<table id="tenancy-agreement-table">
-    <thead>
-        <tr>
-            <th>Row</th>
-            <th>Column</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>2023</td>
-            <td>
-                <select name="tenancy-2023">
-                    <option value="70%">70%</option>
-                    <option value="80%">80%</option>
-                    <option value="90%">90%</option>
-                    <option value="100%">100%</option>
-                    <option value="others">Others</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>2024</td>
-            <td>
-                <select name="tenancy-2024">
-                    <option value="70%">70%</option>
-                    <option value="80%">80%</option>
-                    <option value="90%">90%</option>
-                    <option value="100%">100%</option>
-                    <option value="others">Others</option>
-                </select>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<button type="button" onclick="addTenancyRow()">Tambah Baris Tenancy</button>
-
-<h3>EA Form</h3>
-<table id="ea-form-table">
-    <thead>
-        <tr>
-            <th>Row</th>
-            <th>Column</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>ASB Divident</td>
-            <td>
-                <select name="ea-form-asb-divident">
-                    <option value="100%">100%</option>
-                    <option value="others">Others</option>
-                </select>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<button type="button" onclick="addEARow()">Tambah Baris EA</button>
+        <h3>Tenancy Agreement</h3>
+        <table id="tenancy-agreement-table">
+            <thead>
+                <tr>
+                    <th>70%</th>
+                    <th>80%</th>
+                    <th>100%</th>
+                    <th>Others</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="tenancy-70"></td>
+                    <td><input type="text" name="tenancy-80"></td>
+                    <td><input type="text" name="tenancy-100"></td>
+                    <td><input type="text" name="tenancy-others"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addTenancyRow()">Tambah Baris Tenancy</button>
+        
+        <h3>EA Form</h3>
+        <table id="ea-form-table">
+            <thead>
+                <tr>
+                    <th>Tahun</th>
+                    <th>70%</th>
+                    <th>80%</th>
+                    <th>90%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023</td>
+                    <td><input type="text" name="ea-2023-70"></td>
+                    <td><input type="text" name="ea-2023-80"></td>
+                    <td><input type="text" name="ea-2023-90"></td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td><input type="text" name="ea-2024-70"></td>
+                    <td><input type="text" name="ea-2024-80"></td>
+                    <td><input type="text" name="ea-2024-90"></td>
+                </tr>
+                <tr>
+                    <td>Bonus</td>
+                    <td><input type="text" name="ea-bonus-70"></td>
+                    <td><input type="text" name="ea-bonus-80"></td>
+                    <td><input type="text" name="ea-bonus-90"></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td><input type="text" name="ea-total-70"></td>
+                    <td><input type="text" name="ea-total-80"></td>
+                    <td><input type="text" name="ea-total-90"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>ASB Dividen</h3>
+        <table id="asb-dividen-table">
+            <thead>
+                <tr>
+                    <th>100%</th>
+                    <th>Others</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="asb-100"></td>
+                    <td><input type="text" name="asb-others"></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td><input type="text" name="asb-total"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addASBRow()">Tambah Baris ASB</button>        
 
         <h2>REFINANCE INFORMATION</h2>
         <label for="bank-to-refinance">Bank to Refinance:</label>
