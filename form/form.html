@@ -1,18 +1,215 @@
-<form id="form-data">
-    <label for="nama">Nama:</label>
-    <input type="text" id="nama" name="nama" required>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Kewangan</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Kewangan</h1>
+        <div class="tabs">
+            <div class="tab tab-active" onclick="openTab(event, 'form')">FORM</div>
+            <div class="tab" onclick="openTab(event, 'dsr')">DSR Calculator</div>
+            <div class="tab" onclick="openTab(event, 'max-loan')">Max Loan</div>
+            <div class="tab" onclick="openTab(event, 'refinance')">Refinance</div>
+        </div>
 
-    <label for="gaji">Gaji Bulanan:</label>
-    <input type="number" id="gaji" name="gaji" required>
+        <div id="form" class="tab-content content-active">
+            <form id="form-data">
+                <h2>Maklumat Pelanggan</h2>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" required>
 
-    <label for="komitmen">Jumlah Komitmen Bulanan:</label>
-    <input type="number" id="komitmen" name="komitmen" required>
+                <label for="ic-number">IC Number:</label>
+                <input type="text" id="ic-number" name="ic-number" required>
 
-    <label for="kadar-faedah">Kadar Faedah (%):</label>
-    <input type="number" id="kadar-faedah" name="kadar-faedah" step="0.01" required>
+                <label for="phone-number">Phone Number:</label>
+                <input type="text" id="phone-number" name="phone-number" required>
 
-    <label for="tempoh-pinjaman">Tempoh Pinjaman (tahun):</label>
-    <input type="number" id="tempoh-pinjaman" name="tempoh-pinjaman" required>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" readonly>
 
-    <button type="button" onclick="submitForm()">Hantar</button>
-</form>
+                <label for="joint-applicant">Single/Joint Applicant:</label>
+                <select id="joint-applicant" name="joint-applicant" onchange="toggleJointApplicant()">
+                    <option value="single">Single</option>
+                    <option value="joint">Joint</option>
+                </select>
+
+                <div id="joint-applicant-fields" style="display: none;">
+                    <label for="spouse-name">Spouse Name:</label>
+                    <input type="text" id="spouse-name" name="spouse-name">
+
+                    <label for="spouse-ic-number">Spouse IC Number:</label>
+                    <input type="text" id="spouse-ic-number" name="spouse-ic-number">
+
+                    <label for="spouse-dob">Spouse Date of Birth:</label>
+                    <input type="date" id="spouse-dob" name="spouse-dob" readonly>
+
+                    <h2>Maklumat Gaji Pasangan</h2>
+                    <label for="spouse-salary-type">Salary Type:</label>
+                    <select id="spouse-salary-type" name="spouse-salary-type">
+                        <option value="salary-earner">Salary Earner</option>
+                        <option value="commission-based">Commission Based</option>
+                        <option value="self-employed">Self Employed</option>
+                    </select>
+
+                    <label for="spouse-basic-salary">Spouse Basic Salary:</label>
+                    <input type="number" id="spouse-basic-salary" name="spouse-basic-salary">
+
+                    <label for="spouse-fix-allowance">Fix Allowance:</label>
+                    <input type="number" id="spouse-fix-allowance" name="spouse-fix-allowance">
+
+                    <label for="spouse-caruman-tetap">Caruman Tetap?</label>
+                    <select id="spouse-caruman-tetap" name="spouse-caruman-tetap">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+
+                    <h3>Spouse Earning (Jan-Dec)</h3>
+                    <table id="spouse-earning-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Monthly OT</th>
+                                <th>Variable Allowance</th>
+                                <th>Others</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Repeat this block for each month -->
+                            <tr>
+                                <td>Jan</td>
+                                <td><input type="number" name="spouse-monthly-ot-jan"></td>
+                                <td><input type="number" name="spouse-variable-allowance-jan"></td>
+                                <td><input type="number" name="spouse-others-jan"></td>
+                            </tr>
+                            <!-- Repeat for other months -->
+                        </tbody>
+                    </table>
+
+                    <label for="spouse-total-ot">70% of OT:</label>
+                    <input type="number" id="spouse-total-ot" name="spouse-total-ot" readonly>
+
+                    <label for="spouse-total-variable-allowance">70% of Variable Allowance:</label>
+                    <input type="number" id="spouse-total-variable-allowance" name="spouse-total-variable-allowance" readonly>
+
+                    <h3>Spouse Deduction (Jan-Dec)</h3>
+                    <table id="spouse-deduction-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>EPF</th>
+                                <th>EIS & SOCSO</th>
+                                <th>Tax (PCB)</th>
+                                <th>Others</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Repeat this block for each month -->
+                            <tr>
+                                <td>Jan</td>
+                                <td><input type="number" name="spouse-epf-jan"></td>
+                                <td><input type="number" name="spouse-eis-socso-jan"></td>
+                                <td><input type="number" name="spouse-tax-jan"></td>
+                                <td><input type="number" name="spouse-deduction-others-jan"></td>
+                            </tr>
+                            <!-- Repeat for other months -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Maklumat Gaji</h2>
+                <label for="salary-type">Salary Type:</label>
+                <select id="salary-type" name="salary-type">
+                    <option value="salary-earner">Salary Earner</option>
+                    <option value="commission-based">Commission Based</option>
+                    <option value="self-employed">Self Employed</option>
+                </select>
+
+                <label for="basic-salary">Basic Salary:</label>
+                <input type="number" id="basic-salary" name="basic-salary" required>
+
+                <label for="fix-allowance">Fix Allowance:</label>
+                <input type="number" id="fix-allowance" name="fix-allowance">
+
+                <label for="caruman-tetap">Caruman Tetap?</label>
+                <select id="caruman-tetap" name="caruman-tetap">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <h3>Earning (Jan-Dec)</h3>
+                <table id="earning-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Monthly OT</th>
+                            <th>Variable Allowance</th>
+                            <th>Others</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Repeat this block for each month -->
+                        <tr>
+                            <td>Jan</td>
+                            <td><input type="number" name="monthly-ot-jan"></td>
+                            <td><input type="number" name="variable-allowance-jan"></td>
+                            <td><input type="number" name="others-jan"></td>
+                        </tr>
+                        <!-- Repeat for other months -->
+                    </tbody>
+                </table>
+
+                <label for="total-ot">70% of OT:</label>
+                <input type="number" id="total-ot" name="total-ot" readonly>
+
+                <label for="total-variable-allowance">70% of Variable Allowance:</label>
+                <input type="number" id="total-variable-allowance" name="total-variable-allowance" readonly>
+
+                <h3>Deduction (Jan-Dec)</h3>
+                <table id="deduction-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>EPF</th>
+                            <th>EIS & SOCSO</th>
+                            <th>Tax (PCB)</th>
+                            <th>Others</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Repeat this block for each month -->
+                        <tr>
+                            <td>Jan</td>
+                            <td><input type="number" name="epf-jan"></td>
+                            <td><input type="number" name="eis-socso-jan"></td>
+                            <td><input type="number" name="tax-jan"></td>
+                            <td><input type="number" name="deduction-others-jan"></td>
+                        </tr>
+                        <!-- Repeat for other months -->
+                    </tbody>
+                </table>
+
+                <button type="button" onclick="submitForm()">Hantar</button>
+            </form>
+        </div>
+
+        <div id="dsr" class="tab-content">
+            <!-- Kandungan DSR Calculator -->
+        </div>
+
+        <div id="max-loan" class="tab-content">
+            <!-- Kandungan Max Loan -->
+        </div>
+
+        <div id="refinance" class="tab-content">
+            <!-- Kandungan Refinance -->
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/form.js"></script>
+</body>
+</html>
