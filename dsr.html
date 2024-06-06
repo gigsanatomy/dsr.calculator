@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/dsr.css">
+    <title>DSR Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h3>DSR Calculator</h3>
+        <div class="dsr-calculator">
+            <div class="customer-info">
+                <table>
+                    <tr>
+                        <td>Name: <span id="name">0</span></td>
+                        <td>No IC: <span id="no-ic">--</span></td>
+                    </tr>
+                    <tr>
+                        <td>Age: <span id="age">#VALUE!</span></td>
+                        <td>No Telephone: <span id="no-telephone">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Commitment: <span id="total-commitment">#VALUE!</span></td>
+                        <td>Netpay: <span id="netpay">RM0</span></td>
+                    </tr>
+                    <tr>
+                        <td>NDI Before: <span id="ndi-before">#VALUE!</span></td>
+                        <td>Single/Joint Loan: 
+                            <select id="single-joint-loan" onchange="toggleJointFields()">
+                                <option value="single">SINGLE</option>
+                                <option value="joint">JOINT</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="joint-fields" style="display: none;">
+                        <td>Spouse Name: <span id="spouse-name"></span></td>
+                        <td>Spouse Netpay: <span id="spouse-netpay">RM0</span></td>
+                    </tr>
+                    <tr class="joint-fields" style="display: none;">
+                        <td>Spouse Age: <span id="spouse-age"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dsr-calc">
+                <table>
+                    <tr>
+                        <td colspan="2" class="header">DSR CALCULATOR</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Amount</td>
+                        <td><input type="text" id="loan-amount" value="RM540,000"></td>
+                    </tr>
+                    <tr>
+                        <td>Interest Rate</td>
+                        <td><input type="text" id="interest-rate" value="4.0%"></td>
+                    </tr>
+                    <tr>
+                        <td>Tenure (Years)</td>
+                        <td><input type="text" id="tenure-years"></td>
+                    </tr>
+                    <tr>
+                        <td>Monthly</td>
+                        <td><span id="monthly">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>DSR</td>
+                        <td><span id="dsr">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>New Monthly</td>
+                        <td><span id="new-monthly">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>NDI After</td>
+                        <td><span id="ndi-after">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kelayakan</td>
+                        <td><span id="kelayakan">#VALUE!</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="max-loan">
+                <table>
+                    <tr>
+                        <td colspan="2" class="header">MAX LOAN</td>
+                    </tr>
+                    <tr>
+                        <td>Max Loan Amount</td>
+                        <td><span id="max-loan-amount">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Estimate Monthly</td>
+                        <td><span id="estimate-monthly">#VALUE!</span></td>
+                    </tr>
+                    <tr>
+                        <td>New Commitment</td>
+                        <td><span id="new-commitment">#VALUE!</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="notes">
+                <p>* Single Applicant NDI = Min Cash in hand mesti RM1300</p>
+                <p>* Joint Applicant NDI = Min Cash in hand mesti RM2000</p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/dsr.js"></script>
+</body>
+</html>

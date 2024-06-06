@@ -1,192 +1,192 @@
-document.getElementById('ic-number').addEventListener('input', function() {
-    var ic = this.value;
-    if (ic.length >= 6) {
-        var year = ic.substring(0, 2);
-        var month = ic.substring(2, 4);
-        var day = ic.substring(4, 6);
-        var dob = new Date((year < 50 ? '20' : '19') + year, month - 1, day);
-        document.getElementById('dob').value = dob.toISOString().split('T')[0];
-    }
-});
+// Function to calculate date of birth from IC number
+function calculateDateOfBirth(icNumber) {
+    const year = parseInt(icNumber.substring(0, 2));
+    const month = icNumber.substring(2, 4);
+    const day = icNumber.substring(4, 6);
+    const currentYear = new Date().getFullYear();
+    const birthYear = year < 100 ? (year > currentYear % 100 ? 1900 + year : 2000 + year) : year;
+    
+    const paddedMonth = month.padStart(2, '0');
+    const paddedDay = day.padStart(2, '0');
+    
+    return `${birthYear}-${paddedMonth}-${paddedDay}`;
+}
 
-document.getElementById('spouse-ic-number').addEventListener('input', function() {
-    var ic = this.value;
-    if (ic.length >= 6) {
-        var year = ic.substring(0, 2);
-        var month = ic.substring(2, 4);
-        var day = ic.substring(4, 6);
-        var dob = new Date((year < 50 ? '20' : '19') + year, month - 1, day);
-        document.getElementById('spouse-dob').value = dob.toISOString().split('T')[0];
-    }
-});
-
-function toggleJointApplicant() {
-    var jointApplicant = document.getElementById('single-joint').value;
-    var jointFields = document.getElementById('joint-applicant-fields');
-    var spouseFields = document.getElementById('spouse-salary-info');
-    if (jointApplicant === 'joint') {
-        jointFields.classList.remove('hidden');
-        spouseFields.classList.remove('hidden');
+// Event listener for IC number input
+document.getElementById('ic-number').addEventListener('input', function () {
+    const icNumber = this.value;
+    if (icNumber.length === 12 && !isNaN(icNumber)) {
+        const dob = calculateDateOfBirth(icNumber);
+        document.getElementById('dob').value = dob;
     } else {
-        jointFields.classList.add('hidden');
-        spouseFields.classList.add('hidden');
+        document.getElementById('dob').value = '';
+    }
+});
+
+// Function to calculate totals for earnings and deductions
+function calculateTotals() {
+    const carumanTetap = document.getElementById('caruman-tetap').value;
+    const divisor = carumanTetap === 'yes' ? 3 : 6;
+
+    let totalOT = 0;
+    let totalVariableAllowance = 0;
+    let totalOthers = 0;
+
+    // Sum all OT, Variable Allowance, and Others fields
+    for (let month of ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'ogos', 'sep', 'okt', 'nov', 'dis']) {
+        const ot = parseFloat(document.querySelector(`[name="monthly-ot-${month}"]`).value) || 0;
+        const variableAllowance = parseFloat(document.querySelector(`[name="variable-allowance-${month}"]`).value) || 0;
+        const others = parseFloat(document.querySelector(`[name="others-${month}"]`).value) || 0;
+        
+        totalOT += ot;
+        totalVariableAllowance += variableAllowance;
+        totalOthers += others;
+    }
+
+    const totalOT70 = (totalOT / divisor) * 0.7;
+    const totalVariableAllowance70 = (totalVariableAllowance / divisor) * 0.7;
+    const totalOthers70 = (totalOthers / divisor) * 0.7;
+
+    document.getElementById('total-ot').value = totalOT70.toFixed(2);
+    document.getElementById('total-variable-allowance').value = totalVariableAllowance70.toFixed(2);
+    document.getElementById('total-others').value = totalOthers70.toFixed(2);
+
+    // Calculate totals for deductions
+    const deductionFields = ['epf', 'eis-socso', 'tax-pcb', 'deduction-others'];
+    for (let field of deductionFields) {
+        let total = 0;
+        for (let month of ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'ogos', 'sep', 'okt', 'nov', 'dis']) {
+            total += parseFloat(document.querySelector(`[name="${field}-${month}"]`).value) || 0;
+        }
+        document.querySelector(`[name="total-${field}"]`).value = total.toFixed(2);
+    }
+
+    // Calculate total for each month
+    for (let month of ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'ogos', 'sep', 'okt', 'nov', 'dis']) {
+        const totalMonth = deductionFields.reduce((acc, field) => {
+            return acc + (parseFloat(document.querySelector(`[name="${field}-${month}"]`).value) || 0);
+        }, 0);
+        document.querySelector(`[name="total-${month}"]`).value = totalMonth.toFixed(2);
     }
 }
 
-document.getElementById('single-joint').addEventListener('change', toggleJointApplicant);
+// Function to calculate total bonus for EA Form
+function calculateTotalBonus() {
+    const years = ['2023', '2024'];
+    const percentages = ['70', '80', '90'];
 
-
-function calculateOTandAllowance(carumanTetap, otInputs, allowanceInputs, totalOTField, totalAllowanceField) {
-    var totalOT = 0;
-    var totalAllowance = 0;
-
-    otInputs.forEach(function(input) {
-        totalOT += parseFloat(input.value) || 0;
-    });
-
-    allowanceInputs.forEach(function(input) {
-        totalAllowance += parseFloat(input.value) || 0;
-    });
-
-    var divider = carumanTetap === 'yes' ? 6 : 3;
-    var resultOT = (totalOT / divider) * 0.7;
-    var resultAllowance = (totalAllowance / divider) * 0.7;
-
-    document.getElementById(totalOTField).value = resultOT.toFixed(2);
-    document.getElementById(totalAllowanceField).value = resultAllowance.toFixed(2);
-}
-
-function updateDeductionTotals(carumanTetap) {
-    var deductionRows = document.querySelectorAll('#deduction-table tbody tr');
-    deductionRows.forEach(function(row) {
-        var total = 0;
-        var inputs = row.querySelectorAll('input[type="number"]');
-        inputs.forEach(function(input) {
-            total += parseFloat(input.value) || 0;
+    percentages.forEach(percent => {
+        let total = 0;
+        years.forEach(year => {
+            total += parseFloat(document.querySelector(`[name="ea-${year}-${percent}"]`).value) || 0;
         });
-        var divider = carumanTetap === 'yes' ? 6 : 3;
-        var result = total / divider;
-        var totalCell = row.querySelector('.deduction-total');
-        totalCell.textContent = result.toFixed(2);
+        total = (total / 2 / 12) * (parseInt(percent) / 100);
+        document.querySelector(`[name="total-bonus-${percent}"]`).value = total.toFixed(2);
     });
 }
 
-document.getElementById('caruman-tetap').addEventListener('change', function() {
-    var carumanTetap = this.value;
-    var otInputs = document.querySelectorAll('input[name^="monthly-ot"]');
-    var allowanceInputs = document.querySelectorAll('input[name^="variable-allowance"]');
-    calculateOTandAllowance(carumanTetap, otInputs, allowanceInputs, 'total-ot', 'total-variable-allowance');
-    updateDeductionTotals(carumanTetap);
-});
+// Function to calculate total ASB Dividen
+function calculateTotalASBDividen() {
+    const years = ['2023', '2024'];
+    const types = ['100', 'others'];
 
-document.getElementById('spouse-caruman-tetap').addEventListener('change', function() {
-    var carumanTetap = this.value;
-    var otInputs = document.querySelectorAll('input[name^="spouse-monthly-ot"]');
-    var allowanceInputs = document.querySelectorAll('input[name^="spouse-variable-allowance"]');
-    calculateOTandAllowance(carumanTetap, otInputs, allowanceInputs, 'spouse-total-ot', 'spouse-total-variable-allowance');
-});
-
-function calculateEATotals() {
-    var eaRows = document.querySelectorAll('#ea-form-table tbody tr');
-    eaRows.forEach(function(row) {
-        var total = 0;
-        var inputs = row.querySelectorAll('input[type="text"]');
-        inputs.forEach(function(input) {
-            total += parseFloat(input.value) || 0;
+    types.forEach(type => {
+        let total = 0;
+        years.forEach(year => {
+            total += parseFloat(document.querySelector(`[name="asb-${year}-${type}"]`).value) || 0;
         });
-        var result = (total / 2) / 12;
-        var totalCell = row.querySelector('.ea-total');
-        totalCell.textContent = result.toFixed(2);
+        total = total / 12;
+        document.querySelector(`[name="total-asb-${type}"]`).value = total.toFixed(2);
     });
 }
 
-function calculateASBTotal() {
-    var asbRows = document.querySelectorAll('#asb-dividen-table tbody tr');
-    asbRows.forEach(function(row) {
-        var total = 0;
-        var inputs = row.querySelectorAll('input[type="text"]');
-        inputs.forEach(function(input) {
-            total += parseFloat(input.value) || 0;
-        });
-        var result = total / 12;
-        var totalCell = row.querySelector('.asb-total');
-        totalCell.textContent = result.toFixed(2);
-    });
+// Function to calculate Actual Housing Loan Balance
+function calculateActualHousingLoanBalance() {
+    const houseMonthly = parseFloat(document.getElementById('house-monthly').value) || 0;
+    const housingLoanBalance = parseFloat(document.getElementById('housing-loan-balance').value) || 0;
+    const actualHousingLoanBalance = (houseMonthly * 3) + housingLoanBalance;
+    document.getElementById('actual-housing-loan-bal').value = actualHousingLoanBalance.toFixed(2);
 }
 
-function calculateHousingLoanBal() {
-    var houseMonthly = parseFloat(document.getElementById('house-monthly').value) || 0;
-    var housingLoanBal = parseFloat(document.getElementById('housing-loan-balance').value) || 0;
-    var actualLoanBal = (houseMonthly * 3) + housingLoanBal;
-    document.getElementById('actual-housing-loan-bal').textContent = actualLoanBal.toFixed(2);
-}
-
-function calculateSpouseHousingLoanBal() {
-    var houseMonthly = parseFloat(document.getElementById('spouse-house-monthly').value) || 0;
-    var housingLoanBal = parseFloat(document.getElementById('spouse-housing-loan-balance').value) || 0;
-    var actualLoanBal = (houseMonthly * 3) + housingLoanBal;
-    document.getElementById('spouse-actual-housing-loan-bal').textContent = actualLoanBal.toFixed(2);
-}
-
+// Function to add a new row to a table
 function addRow(tableId) {
-    var table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow();
-    newRow.innerHTML = `
-        <td><input type="number" name="item-no"></td>
-        <td>
-            <select name="ccris-item">
-                <option value="pelinfnce">PELNFNCE</option>
-                <option value="crdtcard">CRDTCARD</option>
-                <option value="otlinfnce">OTLNFNCE</option>
-                <option value="pcpascar">PCPASCAR</option>
-                <option value="hslnfnce">HSLNFNCE</option>
-                <option value="stlinfnce">STLNFNCE</option>
-                <option value="ispwnbkg">ISPWNBKG</option>
-            </select>
-        </td>
-        <td>
-            <select name="payslip-item">
-                <option value="pelinfnce">PELNFNCE</option>
-                <option value="crdtcard">CRDTCARD</option>
-                <option value="otlinfnce">OTLNFNCE</option>
-                <option value="pcpascar">PCPASCAR</option>
-                <option value="hslnfnce">HSLNFNCE</option>
-                <option value="stlinfnce">STLNFNCE</option>
-                <option value="ispwnbkg">ISPWNBKG</option>
-            </select>
-        </td>
-        <td><input type="number" name="total-outstanding"></td>
-        <td><input type="number" name="monthly-payment"></td>
-    `;
+    const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    if (tableId === 'consolidate-table') {
+        newRow.innerHTML = `
+            <td><input type="number" name="item-no"></td>
+            <td>
+                <select name="ccris-item">
+                    <option value="pelinfnce">PELNFNCE</option>
+                    <option value="crdtcard">CRDTCARD</option>
+                    <option value="otlinfnce">OTLNFNCE</option>
+                    <option value="pcpascar">PCPASCAR</option>
+                    <option value="hslnfnce">HSLNFNCE</option>
+                    <option value="stlinfnce">STLNFNCE</option>
+                    <option value="ispwnbkg">ISPWNBKG</option>
+                </select>
+            </td>
+            <td>
+                <select name="payslip-item">
+                    <option value="pelinfnce">PELNFNCE</option>
+                    <option value="crdtcard">CRDTCARD</option>
+                    <option value="otlinfnce">OTLNFNCE</option>
+                    <option value="pcpascar">PCPASCAR</option>
+                    <option value="hslnfnce">HSLNFNCE</option>
+                    <option value="stlinfnce">STLNFNCE</option>
+                    <option value="ispwnbkg">ISPWNBKG</option>
+                </select>
+            </td>
+            <td><input type="number" name="total-outstanding"></td>
+            <td><input type="number" name="monthly-payment"></td>
+        `;
+    } else if (tableId === 'not-consolidate-table') {
+        newRow.innerHTML = `
+            <td><input type="number" name="not-item-no"></td>
+            <td>
+                <select name="not-ccris-item">
+                    <option value="pelinfnce">PELNFNCE</option>
+                    <option value="crdtcard">CRDTCARD</option>
+                    <option value="otlinfnce">OTLNFNCE</option>
+                    <option value="pcpascar">PCPASCAR</option>
+                    <option value="hslnfnce">HSLNFNCE</option>
+                    <option value="stlinfnce">STLNFNCE</option>
+                    <option value="ispwnbkg">ISPWNBKG</option>
+                </select>
+            </td>
+            <td>
+                <select name="not-payslip-item">
+                    <option value="pelinfnce">PELNFNCE</option>
+                    <option value="crdtcard">CRDTCARD</option>
+                    <option value="otlinfnce">OTLNFNCE</option>
+                    <option value="pcpascar">PCPASCAR</option>
+                    <option value="hslnfnce">HSLNFNCE</option>
+                    <option value="stlinfnce">STLNFNCE</option>
+                    <option value="ispwnbkg">ISPWNBKG</option>
+                </select>
+            </td>
+            <td><input type="number" name="not-monthly-payment"></td>
+        `;
+    }
 }
 
-function submitForm() {
-    var form = document.getElementById('form-data');
-    var formData = new FormData(form);
-    console.log('Nama:', formData.get('nama'));
-    console.log('IC Number:', formData.get('ic-number'));
-    console.log('Phone Number:', formData.get('phone-number'));
-    console.log('Date of Birth:', formData.get('dob'));
-    console.log('Joint Applicant:', formData.get('joint-applicant'));
-    console.log('Spouse Name:', formData.get('spouse-name'));
-    console.log('Spouse IC Number:', formData.get('spouse-ic-number'));
-    console.log('Spouse Date of Birth:', formData.get('spouse-dob'));
-    console.log('Spouse Salary Type:', formData.get('spouse-salary-type'));
-    console.log('Spouse Basic Salary:', formData.get('spouse-basic-salary'));
-    console.log('Spouse Fix Allowance:', formData.get('spouse-fix-allowance'));
-    console.log('Spouse Caruman Tetap:', formData.get('spouse-caruman-tetap'));
-    console.log('Salary Type:', formData.get('salary-type'));
-    console.log('Basic Salary:', formData.get('basic-salary'));
-    console.log('Fix Allowance:', formData.get('fix-allowance'));
-    console.log('Caruman Tetap:', formData.get('caruman-tetap'));
-    calculateHousingLoanBal();
-    calculateSpouseHousingLoanBal();
-    calculateEATotals();
-    calculateASBTotal();
-    // Logik untuk hantar data tambahan jika diperlukan
-}
-
-// Initialize first tab as active
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('.tab-active').click();
+// Add event listeners to recalculate totals when values change
+document.querySelectorAll('input[name^="monthly-ot"], input[name^="variable-allowance"], input[name^="others"], input[name^="epf"], input[name^="eis-socso"], input[name^="tax-pcb"], input[name^="deduction-others"]').forEach(input => {
+    input.addEventListener('input', calculateTotals);
 });
+document.querySelectorAll('input[name^="ea-"]').forEach(input => {
+    input.addEventListener('input', calculateTotalBonus);
+});
+document.querySelectorAll('input[name^="asb-"]').forEach(input => {
+    input.addEventListener('input', calculateTotalASBDividen);
+});
+document.getElementById('caruman-tetap').addEventListener('change', calculateTotals);
+document.getElementById('house-monthly').addEventListener('input', calculateActualHousingLoanBalance);
+document.getElementById('housing-loan-balance').addEventListener('input', calculateActualHousingLoanBalance);
+
+// Initial calculation
+calculateTotals();
+calculateTotalBonus();
+calculateTotalASBDividen();
+calculateActualHousingLoanBalance();
