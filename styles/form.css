@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -106,6 +110,3 @@ th {
     border-radius: 3px;
 }
 
-.hidden {
-    display: none;
-}

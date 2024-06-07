@@ -8,40 +8,40 @@
 </head>
 <body>
     <div class="container">
-            <!-- Customer Details -->
-            <h3>CUSTOMER DETAILS</h3>
-            <form id="form-data">
-                <div class="customer-details">
-                    <label for="nama">Name:</label>
-                    <input type="text" id="nama" name="nama">
-                    <label for="ic-number">IC Number:</label>
-                    <input type="text" id="ic-number" name="ic-number">
-                    <label for="phone-number">Phone Number:</label>
-                    <input type="text" id="phone-number" name="phone-number">
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" id="dob" name="dob" readonly>
-                </div>
-            </form>
-            
-            <!-- Salary Info -->
-            <h3>SALARY INFO</h3>
-            <div class="salary-info">
-                <label for="salary-type">Salary Type:</label>
-                <select id="salary-type" name="salary-type">
-                    <option value="salary-earner">Salary Earner</option>
-                    <option value="commision-based">Commision Based</option>
-                    <option value="self-employed">Self Employed</option>
-                </select>
-                <label for="basic-salary">Basic Salary:</label>
-                <input type="number" id="basic-salary" name="basic-salary">
-                <label for="fix-allowance">Fix Allowance:</label>
-                <input type="number" id="fix-allowance" name="fix-allowance">
-                <label for="caruman-tetap">Caruman Tetap?</label>
-                <select id="caruman-tetap" name="caruman-tetap">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
+        <!-- Customer Details -->
+        <h3>CUSTOMER DETAILS</h3>
+        <form id="form-data">
+            <div class="customer-details">
+                <label for="nama">Name:</label>
+                <input type="text" id="nama" name="nama">
+                <label for="ic-number">IC Number:</label>
+                <input type="text" id="ic-number" name="ic-number">
+                <label for="phone-number">Phone Number:</label>
+                <input type="text" id="phone-number" name="phone-number">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" readonly>
             </div>
+        </form>
+    
+        <!-- Salary Info -->
+        <h3>SALARY INFO</h3>
+        <div class="salary-info">
+            <label for="salary-type">Salary Type:</label>
+            <select id="salary-type" name="salary-type">
+                <option value="salary-earner">Salary Earner</option>
+                <option value="commision-based">Commision Based</option>
+                <option value="self-employed">Self Employed</option>
+            </select>
+            <label for="basic-salary">Basic Salary:</label>
+            <input type="number" id="basic-salary" name="basic-salary">
+            <label for="fix-allowance">Fix Allowance:</label>
+            <input type="number" id="fix-allowance" name="fix-allowance">
+            <label for="caruman-tetap">Caruman Tetap?</label>
+            <select id="caruman-tetap" name="caruman-tetap">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
 
             <!-- Earning Table -->
             <form id="form-data">
@@ -329,182 +329,187 @@
             </table>
             <button type="button" onclick="addRow('not-consolidate-table')">Tambah Baris</button>
 
-            <!-- Spouse Salary Info -->
-            <div id="spouse-salary-info" class="hidden-section">
-                <h3>PARTNER SALARY INFO</h3>
-                <div class="salary-info">
-                    <label for="spouse-salary-type">Salary Type:</label>
-                    <select id="spouse-salary-type" name="spouse-salary-type">
-                        <option value="salary-earner">Salary Earner</option>
-                        <option value="commision-based">Commision Based</option>
-                        <option value="self-employed">Self Employed</option>
-                    </select>
-                    <label for="spouse-basic-salary">Basic Salary:</label>
-                    <input type="number" id="spouse-basic-salary" name="spouse-basic-salary">
-                    <label for="spouse-fix-allowance">Fix Allowance:</label>
-                    <input type="number" id="spouse-fix-allowance" name="spouse-fix-allowance">
-                    <label for="spouse-caruman-tetap">Caruman Tetap?</label>
-                    <select id="spouse-caruman-tetap" name="spouse-caruman-tetap">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-                <!-- Earning Table for Spouse -->
-                <h3>PARTNER EARNING</h3>
-                <table id="spouse-earning-table">
-                    <thead>
-                        <tr>
-                            <th>Monthly</th>
-                            <th>OT</th>
-                            <th>OT 2</th>
-                            <th>Variable Allowance</th>
-                            <th>Others</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>JAN</td><td><input type="number" name="spouse-monthly-ot-jan"></td><td><input type="number" name="spouse-monthly-ot2-jan"></td><td><input type="number" name="spouse-variable-allowance-jan"></td><td><input type="number" name="spouse-others-jan"></td></tr>
-                        <tr><td>FEB</td><td><input type="number" name="spouse-monthly-ot-feb"></td><td><input type="number" name="spouse-monthly-ot2-feb"></td><td><input type="number" name="spouse-variable-allowance-feb"></td><td><input type="number" name="spouse-others-feb"></td></tr>
-                        <tr><td>MAR</td><td><input type="number" name="spouse-monthly-ot-mar"></td><td><input type="number" name="spouse-monthly-ot2-mar"></td><td><input type="number" name="spouse-variable-allowance-mar"></td><td><input type="number" name="spouse-others-mar"></td></tr>
-                        <tr><td>APR</td><td><input type="number" name="spouse-monthly-ot-apr"></td><td><input type="number" name="spouse-monthly-ot2-apr"></td><td><input type="number" name="spouse-variable-allowance-apr"></td><td><input type="number" name="spouse-others-apr"></td></tr>
-                        <tr><td>MEI</td><td><input type="number" name="spouse-monthly-ot-mei"></td><td><input type="number" name="spouse-monthly-ot2-mei"></td><td><input type="number" name="spouse-variable-allowance-mei"></td><td><input type="number" name="spouse-others-mei"></td></tr>
-                        <tr><td>JUN</td><td><input type="number" name="spouse-monthly-ot-jun"></td><td><input type="number" name="spouse-monthly-ot2-jun"></td><td><input type="number" name="spouse-variable-allowance-jun"></td><td><input type="number" name="spouse-others-jun"></td></tr>
-                        <tr><td>JUL</td><td><input type="number" name="spouse-monthly-ot-jul"></td><td><input type="number" name="spouse-monthly-ot2-jul"></td><td><input type="number" name="spouse-variable-allowance-jul"></td><td><input type="number" name="spouse-others-jul"></td></tr>
-                        <tr><td>OGOS</td><td><input type="number" name="spouse-monthly-ot-ogos"></td><td><input type="number" name="spouse-monthly-ot2-ogos"></td><td><input type="number" name="spouse-variable-allowance-ogos"></td><td><input type="number" name="spouse-others-ogos"></td></tr>
-                        <tr><td>SEP</td><td><input type="number" name="spouse-monthly-ot-sep"></td><td><input type="number" name="spouse-monthly-ot2-sep"></td><td><input type="number" name="spouse-variable-allowance-sep"></td><td><input type="number" name="spouse-others-sep"></td></tr>
-                        <tr><td>OKT</td><td><input type="number" name="spouse-monthly-ot-okt"></td><td><input type="number" name="spouse-monthly-ot2-okt"></td><td><input type="number" name="spouse-variable-allowance-okt"></td><td><input type="number" name="spouse-others-okt"></td></tr>
-                        <tr><td>NOV</td><td><input type="number" name="spouse-monthly-ot-nov"></td><td><input type="number" name="spouse-monthly-ot2-nov"></td><td><input type="number" name="spouse-variable-allowance-nov"></td><td><input type="number" name="spouse-others-nov"></td></tr>
-                        <tr><td>DIS</td><td><input type="number" name="spouse-monthly-ot-dis"></td><td><input type="number" name="spouse-monthly-ot2-dis"></td><td><input type="number" name="spouse-variable-allowance-dis"></td><td><input type="number" name="spouse-others-dis"></td></tr>
-                    </tbody>
-                </table>
-                <div class="totals">
-                    <div>
-                        <label>70% of Overtime:</label>
-                        <input type="text" id="spouse-total-ot" readonly>
-                    </div>
-                    <div>
-                        <label>70% of Variable Allowance:</label>
-                        <input type="text" id="spouse-total-variable-allowance" readonly>
-                    </div>
-                    <div>
-                        <label>70% of Others:</label>
-                        <input type="text" id="spouse-total-others" readonly>
-                    </div>
-                </div>
-
-                <!-- Deduction Table for Spouse -->
-                <h3>PARTNER DEDUCTION</h3>
-                <table id="spouse-deduction-table">
-                    <thead>
-                        <tr>
-                            <th>Monthly</th>
-                            <th>EPF</th>
-                            <th>EIS & SOCSO</th>
-                            <th>Tax (PCB)</th>
-                            <th>Others</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>JAN</td><td><input type="number" name="spouse-epf-jan"></td><td><input type="number" name="spouse-eis-socso-jan"></td><td><input type="number" name="spouse-tax-pcb-jan"></td><td><input type="number" name="spouse-deduction-others-jan"></td><td></td></tr>
-                        <tr><td>FEB</td><td><input type="number" name="spouse-epf-feb"></td><td><input type="number" name="spouse-eis-socso-feb"></td><td><input type="number" name="spouse-tax-pcb-feb"></td><td><input type="number" name="spouse-deduction-others-feb"></td><td></td></tr>
-                        <tr><td>MAR</td><td><input type="number" name="spouse-epf-mar"></td><td><input type="number" name="spouse-eis-socso-mar"></td><td><input type="number" name="spouse-tax-pcb-mar"></td><td><input type="number" name="spouse-deduction-others-mar"></td><td></td></tr>
-                        <tr><td>APR</td><td><input type="number" name="spouse-epf-apr"></td><td><input type="number" name="spouse-eis-socso-apr"></td><td><input type="number" name="spouse-tax-pcb-apr"></td><td><input type="number" name="spouse-deduction-others-apr"></td><td></td></tr>
-                        <tr><td>MEI</td><td><input type="number" name="spouse-epf-mei"></td><td><input type="number" name="spouse-eis-socso-mei"></td><td><input type="number" name="spouse-tax-pcb-mei"></td><td><input type="number" name="spouse-deduction-others-mei"></td><td></td></tr>
-                        <tr><td>JUN</td><td><input type="number" name="spouse-epf-jun"></td><td><input type="number" name="spouse-eis-socso-jun"></td><td><input type="number" name="spouse-tax-pcb-jun"></td><td><input type="number" name="spouse-deduction-others-jun"></td><td></td></tr>
-                        <tr><td>JUL</td><td><input type="number" name="spouse-epf-jul"></td><td><input type="number" name="spouse-eis-socso-jul"></td><td><input type="number" name="spouse-tax-pcb-jul"></td><td><input type="number" name="spouse-deduction-others-jul"></td><td></td></tr>
-                        <tr><td>OGOS</td><td><input type="number" name="spouse-epf-ogos"></td><td><input type="number" name="spouse-eis-socso-ogos"></td><td><input type="number" name="spouse-tax-pcb-ogos"></td><td><input type="number" name="spouse-deduction-others-ogos"></td><td></td></tr>
-                        <tr><td>SEP</td><td><input type="number" name="spouse-epf-sep"></td><td><input type="number" name="spouse-eis-socso-sep"></td><td><input type="number" name="spouse-tax-pcb-sep"></td><td><input type="number" name="spouse-deduction-others-sep"></td><td></td></tr>
-                        <tr><td>OKT</td><td><input type="number" name="spouse-epf-okt"></td><td><input type="number" name="spouse-eis-socso-okt"></td><td><input type="number" name="spouse-tax-pcb-okt"></td><td><input type="number" name="spouse-deduction-others-okt"></td><td></td></tr>
-                        <tr><td>NOV</td><td><input type="number" name="spouse-epf-nov"></td><td><input type="number" name="spouse-eis-socso-nov"></td><td><input type="number" name="spouse-tax-pcb-nov"></td><td><input type="number" name="spouse-deduction-others-nov"></td><td></td></tr>
-                        <tr><td>DIS</td><td><input type="number" name="spouse-epf-dis"></td><td><input type="number" name="spouse-eis-socso-dis"></td><td><input type="number" name="spouse-tax-pcb-dis"></td><td><input type="number" name="spouse-deduction-others-dis"></td><td></td></tr>
-                        <tr><td>Total</td><td><input type="text" name="spouse-total-epf" readonly></td><td><input type="text" name="spouse-total-eis-socso" readonly></td><td><input type="text" name="spouse-total-tax-pcb" readonly></td><td><input type="text" name="spouse-total-deduction-others" readonly></td><td></td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Tenancy Agreement Table for Spouse -->
-                <h3>PARTNER TENANCY AGREEMENT</h3>
-                <table id="spouse-tenancy-agreement-table">
-                    <thead>
-                        <tr>
-                            <th>70%</th>
-                            <th>80%</th>
-                            <th>100%</th>
-                            <th>Others</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="spouse-tenancy-70"></td>
-                            <td><input type="text" name="spouse-tenancy-80"></td>
-                            <td><input type="text" name="spouse-tenancy-100"></td>
-                            <td><input type="text" name="spouse-tenancy-others"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- EA Form Table for Spouse -->
-                <h3>PARTNER EA FORM</h3>
-                <table id="spouse-ea-form-table">
-                    <thead>
-                        <tr>
-                            <th>Tahun</th>
-                            <th>70%</                <th>80%</th>
-                            <th>90%</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2023</td>
-                            <td><input type="number" name="spouse-ea-2023-70"></td>
-                            <td><input type="number" name="spouse-ea-2023-80"></td>
-                            <td><input type="number" name="spouse-ea-2023-90"></td>
-                        </tr>
-                        <tr>
-                            <td>2024</td>
-                            <td><input type="number" name="spouse-ea-2024-70"></td>
-                            <td><input type="number" name="spouse-ea-2024-80"></td>
-                            <td><input type="number" name="spouse-ea-2024-90"></td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td><input type="text" name="spouse-total-bonus-70" readonly></td>
-                            <td><input type="text" name="spouse-total-bonus-80" readonly></td>
-                            <td><input type="text" name="spouse-total-bonus-90" readonly></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- ASB Dividen Table for Spouse -->
-                <h3>PARTNER ASB DIVIDEN</h3>
-                <table id="spouse-asb-dividen-table">
-                    <thead>
-                        <tr>
-                            <th>Tahun</th>
-                            <th>100%</th>
-                            <th>Others</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2023</td>
-                            <td><input type="number" name="spouse-asb-2023-100"></td>
-                            <td><input type="number" name="spouse-asb-2023-Others"></td>
-                        </tr>
-                        <tr>
-                            <td>2024</td>
-                            <td><input type="number" name="spouse-asb-2024-100"></td>
-                            <td><input type="number" name="spouse-asb-2024-Others"></td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td><input type="text" name="spouse-total-asb-100" readonly></td>
-                            <td><input type="text" name="spouse-total-asb-Others" readonly></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </form>
+<!-- Spouse Salary Info (Initially Hidden) -->
+<div id="spouse-salary-info" class="hidden">
+    <h3>PARTNER SALARY INFO</h3>
+    <div id="joint-applicant-fields" class="hidden-section hidden">
+        <label for="spouse-name">Spouse Name:</label>
+        <input type="text" id="spouse-name" name="spouse-name">
+        <label for="spouse-ic-number">Spouse IC Number:</label>
+        <input type="text" id="spouse-ic-number" name="spouse-ic-number">
+        <label for="spouse-dob">Spouse Date of Birth:</label>
+        <input type="date" id="spouse-dob" name="spouse-dob" readonly>
     </div>
+    <label for="spouse-salary-type">Salary Type:</label>
+    <select id="spouse-salary-type" name="spouse-salary-type">
+        <option value="salary-earner">Salary Earner</option>
+        <option value="commision-based">Commision Based</option>
+        <option value="self-employed">Self Employed</option>
+    </select>
+    <label for="spouse-basic-salary">Spouse Basic Salary:</label>
+    <input type="number" id="spouse-basic-salary" name="spouse-basic-salary">
+    <label for="spouse-fix-allowance">Fix Allowance:</label>
+    <input type="number" id="spouse-fix-allowance" name="spouse-fix-allowance">
+    <label for="spouse-caruman-tetap">Caruman Tetap?</label>
+    <select id="spouse-caruman-tetap" name="spouse-caruman-tetap">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+    <!-- Spouse Earning Table -->
+    <h3>PARTNER EARNING</h3>
+    <table id="spouse-earning-table">
+        <thead>
+            <tr>
+                <th>Monthly</th>
+                <th>OT</th>
+                <th>OT 2</th>
+                <th>Variable Allowance</th>
+                <th>Others</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>JAN</td><td><input type="number" name="spouse-monthly-ot-jan"></td><td><input type="number" name="spouse-monthly-ot2-jan"></td><td><input type="number" name="spouse-variable-allowance-jan"></td><td><input type="number" name="spouse-others-jan"></td></tr>
+            <tr><td>FEB</td><td><input type="number" name="spouse-monthly-ot-feb"></td><td><input type="number" name="spouse-monthly-ot2-feb"></td><td><input type="number" name="spouse-variable-allowance-feb"></td><td><input type="number" name="spouse-others-feb"></td></tr>
+            <tr><td>MAR</td><td><input type="number" name="spouse-monthly-ot-mar"></td><td><input type="number" name="spouse-monthly-ot2-mar"></td><td><input type="number" name="spouse-variable-allowance-mar"></td><td><input type="number" name="spouse-others-mar"></td></tr>
+            <tr><td>APR</td><td><input type="number" name="spouse-monthly-ot-apr"></td><td><input type="number" name="spouse-monthly-ot2-apr"></td><td><input type="number" name="spouse-variable-allowance-apr"></td><td><input type="number" name="spouse-others-apr"></td></tr>
+            <tr><td>MEI</td><td><input type="number" name="spouse-monthly-ot-mei"></td><td><input type="number" name="spouse-monthly-ot2-mei"></td><td><input type="number" name="spouse-variable-allowance-mei"></td><td><input type="number" name="spouse-others-mei"></td></tr>
+            <tr><td>JUN</td><td><input type="number" name="spouse-monthly-ot-jun"></td><td><input type="number" name="spouse-monthly-ot2-jun"></td><td><input type="number" name="spouse-variable-allowance-jun"></td><td><input type="number" name="spouse-others-jun"></td></tr>
+            <tr><td>JUL</td><td><input type="number" name="spouse-monthly-ot-jul"></td><td><input type="number" name="spouse-monthly-ot2-jul"></td><td><input type="number" name="spouse-variable-allowance-jul"></td><td><input type="number" name="spouse-others-jul"></td></tr>
+            <tr><td>OGOS</td><td><input type="number" name="spouse-monthly-ot-ogos"></td><td><input type="number" name="spouse-monthly-ot2-ogos"></td><td><input type="number" name="spouse-variable-allowance-ogos"></td><td><input type="number" name="spouse-others-ogos"></td></tr>
+            <tr><td>SEP</td><td><input type="number" name="spouse-monthly-ot-sep"></td><td><input type="number" name="spouse-monthly-ot2-sep"></td><td><input type="number" name="spouse-variable-allowance-sep"></td><td><input type="number" name="spouse-others-sep"></td></tr>
+            <tr><td>OKT</td><td><input type="number" name="spouse-monthly-ot-okt"></td><td><input type="number" name="spouse-monthly-ot2-okt"></td><td><input type="number" name="spouse-variable-allowance-okt"></td><td><input type="number" name="spouse-others-okt"></td></tr>
+            <tr><td>NOV</td><td><input type="number" name="spouse-monthly-ot-nov"></td><td><input type="number" name="spouse-monthly-ot2-nov"></td><td><input type="number" name="spouse-variable-allowance-nov"></td><td><input type="number" name="spouse-others-nov"></td></tr>
+            <tr><td>DIS</td><td><input type="number" name="spouse-monthly-ot-dis"></td><td><input type="number" name="spouse-monthly-ot2-dis"></td><td><input type="number" name="spouse-variable-allowance-dis"></td><td><input type="number" name="spouse-others-dis"></td></tr>
+        </tbody>
+    </table>
+    <div class="totals">
+        <div>
+            <label>70% of Overtime:</label>
+            <input type="text" id="spouse-total-ot" readonly>
+        </div>
+        <div>
+            <label>70% of Variable Allowance:</label>
+            <input type="text" id="spouse-total-variable-allowance" readonly>
+        </div>
+        <div>
+            <label>70% of Others:</label>
+            <input type="text" id="spouse-total-others" readonly>
+        </div>
+    </div>
+
+    <!-- Spouse Deduction Table -->
+    <h3>PARTNER DEDUCTION</h3>
+    <table id="spouse-deduction-table">
+        <thead>
+            <tr>
+                <th>Monthly</th>
+                <th>EPF</th>
+                <th>EIS & SOCSO</th>
+                <th>Tax (PCB)</th>
+                <th>Others</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>JAN</td><td><input type="number" name="spouse-epf-jan"></td><td><input type="number" name="spouse-eis-socso-jan"></td><td><input type="number" name="spouse-tax-pcb-jan"></td><td><input type="number" name="spouse-deduction-others-jan"></td><td></td></tr>
+            <tr><td>FEB</td><td><input type="number" name="spouse-epf-feb"></td><td><input type="number" name="spouse-eis-socso-feb"></td><td><input type="number" name="spouse-tax-pcb-feb"></td><td><input type="number" name="spouse-deduction-others-feb"></td><td></td></tr>
+            <tr><td>MAR</td><td><input type="number" name="spouse-epf-mar"></td><td><input type="number" name="spouse-eis-socso-mar"></td><td><input type="number" name="spouse-tax-pcb-mar"></td><td><input type="number" name="spouse-deduction-others-mar"></td><td></td></tr>
+            <tr><td>APR</td><td><input type="number" name="spouse-epf-apr"></td><td><input type="number" name="spouse-eis-socso-apr"></td><td><input type="number" name="spouse-tax-pcb-apr"></td><td><input type="number" name="spouse-deduction-others-apr"></td><td></td></tr>
+            <tr><td>MEI</td><td><input type="number" name="spouse-epf-mei"></td><td><input type="number" name="spouse-eis-socso-mei"></td><td><input type="number" name="spouse-tax-pcb-mei"></td><td><input type="number" name="spouse-deduction-others-mei"></td><td></td></tr>
+            <tr><td>JUN</td><td><input type="number" name="spouse-epf-jun"></td><td><input type="number" name="spouse-eis-socso-jun"></td><td><input type="number" name="spouse-tax-pcb-jun"></td><td><input type="number" name="spouse-deduction-others-jun"></td><td></td></tr>
+            <tr><td>JUL</td><td><input type="number" name="spouse-epf-jul"></td><td><input type="number" name="spouse-eis-socso-jul"></td><td><input type="number" name="spouse-tax-pcb-jul"></td><td><input type="number" name="spouse-deduction-others-jul"></td><td></td></tr>
+            <tr><td>OGOS</td><td><input type="number" name="spouse-epf-ogos"></td><td><input type="number" name="spouse-eis-socso-ogos"></td><td><input type="number" name="spouse-tax-pcb-ogos"></td><td><input type="number" name="spouse-deduction-others-ogos"></td><td></td></tr>
+            <tr><td>SEP</td><td><input type="number" name="spouse-epf-sep"></td><td><input type="number" name="spouse-eis-socso-sep"></td><td><input type="number" name="spouse-tax-pcb-sep"></td><td><input type="number" name="spouse-deduction-others-sep"></td><td></td></tr>
+            <tr><td>OKT</td><td><input type="number" name="spouse-epf-okt"></td><td><input type="number" name="spouse-eis-socso-okt"></td><td><input type="number" name="spouse-tax-pcb-okt"></td><td><input type="number" name="spouse-deduction-others-okt"></td><td></td></tr>
+            <tr><td>NOV</td><td><input type="number" name="spouse-epf-nov"></td><td><input type="number" name="spouse-eis-socso-nov"></td><td><input type="number" name="spouse-tax-pcb-nov"></td><td><input type="number" name="spouse-deduction-others-nov"></td><td></td></tr>
+            <tr><td>DIS</td><td><input type="number" name="spouse-epf-dis"></td><td><input type="number" name="spouse-eis-socso-dis"></td><td><input type="number" name="spouse-tax-pcb-dis"></td><td><input type="number" name="spouse-deduction-others-dis"></td><td></td></tr>
+            <tr><td>Total</td><td><input type="text" name="spouse-total-epf" readonly></td><td><input type="text" name="spouse-total-eis-socso" readonly></td><td><input type="text" name="spouse-total-tax-pcb" readonly></td><td><input type="text" name="spouse-total-deduction-others" readonly></td><td></td></tr>
+        </tbody>
+    </table>
+
+    <!-- Spouse Tenancy Agreement Table -->
+    <h3>PARTNER TENANCY AGREEMENT</h3>
+    <table id="spouse-tenancy-agreement-table">
+        <thead>
+            <tr>
+                <th>70%</th>
+                <th>80%</th>
+                <th>100%</th>
+                <th>Others</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="spouse-tenancy-70"></td>
+                <td><input type="text" name="spouse-tenancy-80"></td>
+                <td><input type="text" name="spouse-tenancy-100"></td>
+                <td><input type="text" name="spouse-tenancy-others"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Spouse EA Form Table -->
+    <h3>PARTNER EA FORM</h3>
+    <table id="spouse-ea-form-table">
+        <thead>
+            <tr>
+                <th>Tahun</th>
+                <th>70%</th>
+                <th>80%</th>
+                <th>90%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023</td>
+                <td><input type="number" name="spouse-ea-2023-70"></td>
+                <td><input type="number" name="spouse-ea-2023-80"></td>
+                <td><input type="number" name="spouse-ea-2023-90"></td>
+            </tr>
+            <tr>
+                <td>2024</td>
+                <td><input type="number" name="spouse-ea-2024-70"></td>
+                <td><input type="number" name="spouse-ea-2024-80"></td>
+                <td><input type="number" name="spouse-ea-2024-90"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td><input type="text" name="spouse-total-bonus-70" readonly></td>
+                <td><input type="text" name="spouse-total-bonus-80" readonly></td>
+                <td><input type="text" name="spouse-total-bonus-90" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Spouse ASB Dividen Table -->
+    <h3>PARTNER ASB DIVIDEN</h3>
+    <table id="spouse-asb-dividen-table">
+        <thead>
+            <tr>
+                <th>Tahun</th>
+                <th>100%</                <th>Others</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023</td>
+                <td><input type="number" name="spouse-asb-2023-100"></td>
+                <td><input type="number" name="spouse-asb-2023-Others"></td>
+            </tr>
+            <tr>
+                <td>2024</td>
+                <td><input type="number" name="spouse-asb-2024-100"></td>
+                <td><input type="number" name="spouse-asb-2024-Others"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td><input type="text" name="spouse-total-asb-100" readonly></td>
+                <td><input type="text" name="spouse-total-asb-Others" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     <script src="scripts/form.js"></script>
 </body>
 </html>

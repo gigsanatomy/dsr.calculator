@@ -1,3 +1,41 @@
+// Function to format number as currency
+function formatCurrency(value) {
+    return new Intl.NumberFormat('en-MY', { style: 'currency', currency: 'MYR' }).format(value);
+}
+
+// Function to remove currency formatting (to get the raw number)
+function parseCurrency(value) {
+    return parseFloat(value.replace(/[^0-9.-]+/g, ""));
+}
+
+// Event listener to format input as currency
+function addCurrencyFormatting(element) {
+    element.addEventListener('input', function() {
+        if (this.value) {
+            const value = parseCurrency(this.value);
+            this.value = formatCurrency(value);
+        }
+    });
+
+    element.addEventListener('focus', function() {
+        if (this.value) {
+            this.value = parseCurrency(this.value);
+        }
+    });
+
+    element.addEventListener('blur', function() {
+        if (this.value) {
+            const value = parseCurrency(this.value);
+            this.value = formatCurrency(value);
+        }
+    });
+}
+
+// Apply currency formatting to relevant inputs
+document.querySelectorAll('input[type="number"]:not([name$="-percentage"])').forEach(input => {
+    addCurrencyFormatting(input);
+});
+
 // Function to calculate date of birth from IC number
 function calculateDateOfBirth(icNumber) {
     const year = parseInt(icNumber.substring(0, 2));
@@ -170,6 +208,21 @@ function addRow(tableId) {
         `;
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var singleJointSelect = document.getElementById('single-joint');
+    var spouseSection = document.getElementById('spouse-salary-info');
+
+    function toggleSpouseSection() {
+        var isJointApplicant = singleJointSelect.value === 'joint';
+        spouseSection.classList.toggle('hidden', !isJointApplicant);
+    }
+
+    singleJointSelect.addEventListener('change', toggleSpouseSection);
+
+    // Initial check
+    toggleSpouseSection();
+});
 
 // Add event listeners to recalculate totals when values change
 document.querySelectorAll('input[name^="monthly-ot"], input[name^="variable-allowance"], input[name^="others"], input[name^="epf"], input[name^="eis-socso"], input[name^="tax-pcb"], input[name^="deduction-others"]').forEach(input => {
